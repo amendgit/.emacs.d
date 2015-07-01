@@ -42,7 +42,7 @@
 (require-package 'idle-require)
 
 (require 'init-frame-hooks)
-(require 'init-xterm)
+; (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
@@ -97,7 +97,7 @@
 (require 'idle-require)
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 2)
-(setq idle-require-symbols '(
+(setq idle-require-symbols '(init-xterm
                              init-org
                              init-markdown
                              init-recentf
