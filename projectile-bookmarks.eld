@@ -1,0 +1,1 @@
+("~/Src/chromium/" "~/.emacs.d/")

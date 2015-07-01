@@ -65,7 +65,7 @@
 ; (require 'init-mmm)
 
 (require 'init-editing-utils)
-
+(require 'init-projectile)
 ; (require 'init-vc)
 ; (require 'init-darcs)
 ; (require 'init-git)
