@@ -15,11 +15,7 @@
     (global-dired-hide-details-mode -1))
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
-  (setq direx:leaf-icon "  "
-      direx:open-icon "&#9662; "
-      direx:closed-icon "&#9654; ")
-  (push '(direx:direx-mode :position left :width 25 :dedicated t)
-      popwin:special-display-config)
+  
   (add-hook 'dired-mode-hook
             (lambda () (guide-key/add-local-guide-key-sequence "%"))))
 
