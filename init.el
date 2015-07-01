@@ -57,7 +57,8 @@
 ; (require 'init-recentf)
 ; (require 'init-ido)
 ; (require 'init-hippie-expand)
-; (require 'init-auto-complete)
+(require 'init-auto-complete)
+(require 'init-golang)
 ; (require 'init-windows)
 (require 'init-sessions)
 ; (require 'init-fonts)
@@ -96,21 +97,23 @@
 (require 'idle-require)
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 2)
-(setq idle-require-symbols '(init-org
+(setq idle-require-symbols '(
+                             init-org
                              init-markdown
                              init-recentf
                              init-ido
                              init-hippie-expand
-                             init-auto-complete
+                             ; init-auto-complete
+                             ; init-golang
                              init-windows
-                             ; init-sessions
+
                              init-mmm
                              init-fonts
                              init-vc
                              init-darcs
                              init-git
                              init-github
-                             ; init-editing-utils
+
                              init-compile
                              init-crontab
                              init-textile
