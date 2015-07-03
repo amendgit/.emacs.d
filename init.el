@@ -100,7 +100,7 @@
   (require 'init-spelling))
 
 (require 'init-misc)
-
+(require 'init-user-key)
 (require 'init-dash)
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
