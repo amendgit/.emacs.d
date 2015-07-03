@@ -1,4 +1,3 @@
-
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
@@ -42,71 +41,30 @@
 (require-package 'idle-require)
 
 (require 'init-frame-hooks)
-; (require 'init-xterm)
+
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-; (require 'init-proxies)
-; (require 'init-dired)
-; (require 'init-isearch)
-; (require 'init-grep)
-; (require 'init-uniquify)
-; (require 'init-ibuffer)
-; (require 'init-flycheck)
 
-; (require 'init-recentf)
-; (require 'init-ido)
-; (require 'init-hippie-expand)
 (require 'init-auto-complete)
 (require 'init-golang)
-; (require 'init-windows)
 (require 'init-sessions)
-; (require 'init-fonts)
-; (require 'init-mmm)
 
 (require 'init-editing-utils)
 (require 'init-helm)
 (require 'init-projectile)
-; (require 'init-vc)
-; (require 'init-darcs)
-; (require 'init-git)
-; (require 'init-github)
-
-; (require 'init-compile)
-; (require 'init-crontab)
-; (require 'init-textile)
-; (require 'init-markdown)
-; (require 'init-csv)
-; (require 'init-erlang)
-; (require 'init-javascript)
-; (require 'init-php)
-; (require 'init-org)
-; (require 'init-nxml)
-; (require 'init-html)
-; (require 'init-css)
-; (require 'init-haml)
-; (require 'init-python-mode)
-; (require 'init-haskell)
-; (require 'init-ruby-mode)
-; (require 'init-rails)
-; (require 'init-sql)
-
-; (require 'init-paredit)
-; (require 'init-lisp)
-; (require 'init-slime)
-
+(require 'init-linum)
 (require 'idle-require)
+
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 2)
 (setq idle-require-symbols '(init-xterm
                              init-org
                              init-markdown
-                             init-recentf
                              init-ido
                              init-hippie-expand
-                             ; init-auto-complete
-                             ; init-golang
                              init-windows
+                             init-recentf
 
                              init-mmm
                              init-fonts
@@ -119,9 +77,9 @@
                              init-crontab
                              init-textile
                              init-python-mode
+                             init-paredit
                              init-lisp
                              init-slime
-                             init-paredit
                              init-proxies
                              init-dired
                              init-isearch
@@ -162,13 +120,11 @@
 (unless (server-running-p)
   (server-start))
 
-
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
 (when (file-exists-p custom-file)
   (load custom-file))
-
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
@@ -176,7 +132,6 @@
 (when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
   (error "Please move init-local.el to ~/.emacs.d/lisp"))
 (require 'init-local nil t)
-
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)
@@ -187,7 +142,6 @@
           (lambda ()
             (message "init completed in %.2fms"
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
-
 
 (provide 'init)
 

@@ -24,7 +24,7 @@
 ;; http://www.reddit.com/r/emacs/comments/21a4p9/use_recentf_and_ido_together/cgbprem
 (add-hook 'ido-setup-hook (lambda () (define-key ido-completion-map [up] 'previous-history-element)))
 
-
-
+(ido-mode 1)
+(setq ido-seperator "\n")
 
 (provide 'init-ido)
