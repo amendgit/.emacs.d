@@ -13,5 +13,6 @@
 (global-set-key (kbd "C-z z") 'helm-mini)
 (global-set-key (kbd "C-z Z") 'helm-projectile-recentf)
 (global-set-key (kbd "C-z s") 'helm-projectile-grep)
+(global-set-key (kbd "C-z /") 'comment-or-uncomment-region)
 
 (provide 'init-user-key)
