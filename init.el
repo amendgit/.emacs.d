@@ -91,9 +91,6 @@
 (idle-require-mode 1) ;; starts loading
 ;; }}
 
-(when (>= emacs-major-version 24)
-  (require 'init-clojure)
-  (require 'init-clojure-cider))
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
@@ -108,7 +105,7 @@
 (require-package 'gnuplot)
 (require-package 'lua-mode)
 (require-package 'htmlize)
-(require-package 'dsvn)
+
 (when *is-a-mac*
   (require-package 'osx-location))
 (require-package 'regex-tool)
@@ -119,12 +116,6 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-
-;;----------------------------------------------------------------------------
-;; Variables configured via the interactive 'customize' interface
-;;----------------------------------------------------------------------------
-(when (file-exists-p custom-file)
-  (load custom-file))
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings

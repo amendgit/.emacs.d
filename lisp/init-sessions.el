@@ -3,8 +3,8 @@
       desktop-auto-save-timeout 600)
 
 (custom-set-variables
-  '(desktop-save-mode t)
-  '(desktop-restore-eager 3))
+ '(desktop-save-mode t)
+ '(desktop-restore-eager 1))
 
 (defadvice desktop-read (around time-restore activate)
     (let ((start-time (current-time)))
