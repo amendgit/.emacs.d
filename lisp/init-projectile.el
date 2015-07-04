@@ -1,5 +1,5 @@
 (require-package 'projectile)
-(require-package 'neotree)
+; (require-package 'neotree)
 (require-package 'helm-projectile)
 
 (require 'projectile)
@@ -29,10 +29,10 @@
 ;       (message "Could not find git project root."))))
   
 ; (global-set-key (kbd "C-c p") 'neotree-project-dir)
-(global-set-key (kbd "C-c p") 'projectile-mode)
+
 (setq projectile-completion-system 'helm)
 (setq projectile-switch-project-action 'helm-projectile)
-; (setq projectile-find-file 'helm-projectile-find-file)
+(setq projectile-find-file 'helm-projectile-find-file)
 (helm-projectile-on)
 
 (provide 'init-projectile)
