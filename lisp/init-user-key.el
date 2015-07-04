@@ -15,4 +15,9 @@
 (global-set-key (kbd "C-z s") 'helm-projectile-grep)
 (global-set-key (kbd "C-z /") 'comment-or-uncomment-region)
 
+;; (global-set-key (kbd "C-c f") 'helm-for-files)
+;; (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
+;; (global-set-key (kbd "C-x C-o") 'ffap)
+;; (global-set-key (kbd "C-x b") 'helm-buffers-list)
+
 (provide 'init-user-key)

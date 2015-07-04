@@ -2,15 +2,7 @@
 
 (require 'helm-config)
 
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-
-(require 'helm-config)
-
 (autoload 'helm-c-yas-complete "helm-c-yasnippet" nil t)
-(global-set-key (kbd "C-c f") 'helm-for-files)
-(global-set-key (kbd "C-c y") 'helm-c-yas-complete)
-(global-set-key (kbd "C-x C-o") 'ffap)
-
 (autoload 'helm-ls-git-ls "helm-ls-git" nil t)
 (autoload 'helm-browse-project "helm-ls-git" nil t)
 

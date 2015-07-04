@@ -62,7 +62,6 @@
 (setq idle-require-symbols '(init-xterm
                              init-org
                              init-markdown
-                             init-ido
                              init-hippie-expand
                              init-windows
                              init-recentf
