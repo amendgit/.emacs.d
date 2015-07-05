@@ -21,7 +21,7 @@
         (progn
           (neotree-dir project-dir)
           (neotree-find file-name)
-          (projectile-mode)）
+          (projectile-mode))
       (message "Could not find git project root."))))
 
 (provide 'init-neotree)

@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/Src/chromium/" "~/Documents/org-mode/")

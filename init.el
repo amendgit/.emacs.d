@@ -76,6 +76,7 @@
 
                              init-windows
                              init-recentf
+                             init-neotree
 
                              init-ido
                              init-mmm
