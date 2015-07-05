@@ -12,6 +12,10 @@
   local-set-key (kbd "C-c C-r") 'go-remove-unused-imports))
 )
 
+(after-load 'go-mode
+	(setq indent-tabs-mode nil)
+	(setq default-tab-width 4))
+
 (require-package 'auto-complete)
 (require-package 'go-autocomplete)
 
