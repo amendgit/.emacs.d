@@ -24,6 +24,12 @@
               gc-cons-percentage 0.5)
 
 ;;----------------------------------------------------------------------------
+;; Do not litter my fs tree.
+;;----------------------------------------------------------------------------
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
