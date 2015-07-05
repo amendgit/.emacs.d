@@ -14,9 +14,18 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 ;;----------------------------------------------------------------------------
+;; Less GC, more memory
+;;----------------------------------------------------------------------------
+;; By default Emacs will initiate GC every 0.76 MB allocated
+;; (gc-cons-threshold == 800000).
+;; we increase this to 512MB
+;; @see http://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html
+(setq-default gc-cons-threshold (* 1024 1024 512)
+              gc-cons-percentage 0.5)
+
+;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-(setq enable-local-variables t)
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-compat)
 (require 'init-utils)
@@ -48,10 +57,8 @@
 (require 'init-gui-frames)
 
 (require 'init-auto-complete)
-(require 'init-golang)
 (require 'init-sessions)
 
-(require 'init-editing-utils)
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-linum)
@@ -60,9 +67,13 @@
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 2)
 (setq idle-require-symbols '(init-xterm
+                             init-hippie-expand
+                             init-editing-utils
+
+                             init-golang
                              init-org
                              init-markdown
-                             init-hippie-expand
+
                              init-windows
                              init-recentf
 
@@ -82,25 +93,25 @@
                              init-lisp
                              init-slime
                              init-proxies
-                             init-dired
+
                              init-isearch
+                             init-dash
+                             init-ledger
                              init-grep
                              init-ibuffer
                              init-flycheck
                              init-uniquify
+                             init-spelling
                              ))
 (idle-require-mode 1) ;; starts loading
 ;; }}
 
 (require 'init-common-lisp)
 
-(when *spell-check-support-enabled*
-  (require 'init-spelling))
-
 (require 'init-misc)
 (require 'init-user-key)
-(require 'init-dash)
-(require 'init-ledger)
+;; (require 'init-dash)
+;; (require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
