@@ -61,6 +61,7 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
+(require 'init-editing-utils)
 
 (require 'init-auto-complete)
 (require 'init-sessions)
@@ -68,13 +69,12 @@
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-linum)
-(require 'idle-require)
 
+(require 'idle-require)
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 2)
 (setq idle-require-symbols '(init-xterm
                              init-hippie-expand
-                             init-editing-utils
 
                              init-golang
                              init-org
@@ -109,31 +109,21 @@
                              init-flycheck
                              init-uniquify
                              init-spelling
+                             init-backup
+                             init-extra
                              ))
 (idle-require-mode 1) ;; starts loading
 ;; }}
 
 (require 'init-common-lisp)
 
-(require 'init-misc)
-(require 'init-user-key)
-;; (require 'init-dash)
-;; (require 'init-ledger)
-;; Extra packages which don't require any configuration
-
-(require-package 'gnuplot)
-(require-package 'lua-mode)
-(require-package 'htmlize)
-
-(when *is-a-mac*
-  (require-package 'osx-location))
-(require-package 'regex-tool)
-
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(require 'init-user-key)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
@@ -141,12 +131,6 @@
 ;; (require 'server)
 ;; (unless (server-running-p)
 ;;   (server-start))
-
-;;----------------------------------------------------------------------------
-;; Variables configured via the interactive 'customize' interface
-;;----------------------------------------------------------------------------
-(when (file-exists-p custom-file)
-  (load custom-file))
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface

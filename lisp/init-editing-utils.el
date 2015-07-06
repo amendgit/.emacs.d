@@ -58,7 +58,8 @@
 (require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode t)
 
-(global-set-key [remap just-one-space] 'cycle-spacing)
+;; C-z SPC
+;; (global-set-key [remap just-one-space] 'cycle-spacing)
 
 
 ;;; Newline behaviour
@@ -70,7 +71,7 @@
   (move-end-of-line 1)
   (newline-and-indent))
 
-(global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
+;; (global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
 
 
 
@@ -105,7 +106,7 @@
 ;; Zap *up* to char is a handy pair for zap-to-char
 ;;----------------------------------------------------------------------------
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
+;; (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 
 
@@ -131,8 +132,7 @@
 ;; Expand region
 ;;----------------------------------------------------------------------------
 (require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
+;; (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;----------------------------------------------------------------------------
 ;; Don't disable case-change functions
@@ -150,49 +150,40 @@
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
-;; To be able to M-x without meta
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+;; ;; To be able to M-x without meta
+;; (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
-;; Vimmy alternatives to M-^ and C-u M-^
-(global-set-key (kbd "C-c j") 'join-line)
-(global-set-key (kbd "C-c J") (lambda () (interactive) (join-line 1)))
+;; ;; Vimmy alternatives to M-^ and C-u M-^
+;; (global-set-key (kbd "C-c j") 'join-line)
+;; (global-set-key (kbd "C-c J") (lambda () (interactive) (join-line 1)))
 
-(global-set-key (kbd "C-.") 'set-mark-command)
-(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+;; (global-set-key (kbd "C-.") 'set-mark-command)
+;; (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
 (require-package 'ace-jump-mode)
-(global-set-key (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "C-:") 'ace-jump-word-mode)
-
+;; (global-set-key (kbd "C-;") 'ace-jump-mode)
+;; (global-set-key (kbd "C-:") 'ace-jump-word-mode)
 
 (require-package 'multiple-cursors)
-;; multiple-cursors
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-;; From active region to multiple cursors:
-(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-c c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+;; ;; multiple-cursors
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; ;; From active region to multiple cursors:
+;; (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+;; (global-set-key (kbd "C-c c c") 'mc/edit-lines)
+;; (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+;; (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
 
-;; Train myself to use M-f and M-b instead
-(global-unset-key [M-left])
-(global-unset-key [M-right])
-
-
-
+;; kbd: C-M-<backspace>
 (defun kill-back-to-indentation ()
   "Kill from point back to the first non-whitespace character on the line."
   (interactive)
   (let ((prev-pos (point)))
     (back-to-indentation)
     (kill-region (point) prev-pos)))
-
-(global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
-
 
 ;;----------------------------------------------------------------------------
 ;; Page break lines
@@ -245,16 +236,15 @@
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 ;;----------------------------------------------------------------------------
 (require-package 'move-dup)
-(global-set-key [M-up] 'md/move-lines-up)
-(global-set-key [M-down] 'md/move-lines-down)
-(global-set-key [M-S-up] 'md/move-lines-up)
-(global-set-key [M-S-down] 'md/move-lines-down)
 
-(global-set-key (kbd "C-c p") 'md/duplicate-down)
-(global-set-key (kbd "C-c P") 'md/duplicate-up)
+;; (global-set-key [M-S-up] 'md/move-lines-up)
+;; (global-set-key [M-S-down] 'md/move-lines-down)
+
+;; (global-set-key (kbd "C-c p") 'md/duplicate-down)
+;; (global-set-key (kbd "C-c P") 'md/duplicate-up)
 
 ;;----------------------------------------------------------------------------
-;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
+;; Fix backward-up-list to understand quotes, See http://bit.ly/h7mdIL
 ;;----------------------------------------------------------------------------
 (defun backward-up-sexp (arg)
   "Jump up to the start of the ARG'th enclosing sexp."
@@ -264,8 +254,6 @@
            (goto-char (elt ppss 8))
            (backward-up-sexp (1- arg)))
           ((backward-up-list arg)))))
-
-(global-set-key [remap backward-up-list] 'backward-up-sexp) ; C-M-u, C-M-up
 
 
 ;;----------------------------------------------------------------------------
@@ -296,7 +284,7 @@
 
 
 
-
+;; keybind: C-o
 (defun sanityinc/open-line-with-reindent (n)
   "A version of `open-line' which reindents the start and end positions.
 If there is a fill prefix and/or a `left-margin', insert them
@@ -324,9 +312,6 @@ With arg N, insert N newlines."
     (end-of-line)
     (indent-according-to-mode)))
 
-(global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
-
-
 ;;----------------------------------------------------------------------------
 ;; Random line sorting
 ;;----------------------------------------------------------------------------
@@ -342,17 +327,35 @@ With arg N, insert N newlines."
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
+;;----------------------------------------------------------------------------
+;; Random line sorting
+;;----------------------------------------------------------------------------
+(defun shift-region (distance)
+  (if (use-region-p)
+      (let ((mark (mark)))
+        (save-excursion
+          (indent-rigidly (region-beginning)
+                          (region-end)
+                          distance)
+          (push-mark mark t t)
+          (setq deactivate-mark nil)))
+    (indent-rigidly (line-beginning-position)
+                    (line-end-position)
+                    distance)))
+
+;; keybind: C-]
+(defun shift-region-right (count)
+  (interactive "p")
+  (shift-region count))
+
+;; keybind: C-[
+(defun shift-region-left (count)
+  (interactive "p")
+  (shift-region (- count)))
 
 
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
-
-
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
-(guide-key-mode 1)
-(diminish 'guide-key-mode)
-
 
 (provide 'init-editing-utils)
