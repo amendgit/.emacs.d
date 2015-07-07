@@ -96,7 +96,6 @@
                              init-crontab
                              init-textile
                              init-python-mode
-                             init-paredit
                              init-lisp
                              init-slime
                              init-proxies

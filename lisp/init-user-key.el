@@ -12,14 +12,6 @@
 (global-unset-key (kbd "C-x C-b"))
 (global-unset-key  (kbd "C-/")) ;; undo tree undo [C--]
 
-;; previous buffer [C-,]
-(global-unset-key (kbd "C-x <left>"))
-(global-unset-key (kbd "C-x <C-left>"))
-
-;; next buffer [C-.]
-(global-unset-key (kbd "C-x <right>"))
-(global-unset-key (kbd "C-x <C-right>"))
-
 (global-unset-key (kbd "C-x f")) ;; set-fill-column
 (global-unset-key (kbd "M-SPC")) ;; conflict on mac
 
@@ -32,13 +24,14 @@
 (global-set-key (kbd "C-z F") 'helm-dired-action)
 (global-set-key (kbd "C-z s") 'helm-projectile-grep)
 (global-set-key (kbd "C-z f") 'helm-projectile-find-file)
-(global-set-key (kbd "C-z C-z") 'helm-mini)
+(global-set-key (kbd "C-z z") 'helm-mini)
 (global-set-key (kbd "C-z y") 'helm-c-yas-complete)
 (global-set-key (kbd "C-z t") 'neotree-toggle)
 (global-set-key (kbd "C-z T") 'neotree-project-dir)
 (global-set-key (kbd "C-z g") 'goto-line)
 (global-set-key (kbd "C-z n") 'new-frame)
 (global-set-key (kbd "C-z e") 'eshell)
+(global-set-key (kbd "C-z j") 'helm-imenu)
 
 ;;----------------------------------------------------------------------------
 ;; Direct keys.
@@ -46,9 +39,8 @@
 (global-set-key (kbd "C-/") 'comment-or-uncomment-region)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
-
-(global-set-key (kbd "C-,") 'previous-buffer)
-(global-set-key (kbd "C-.") 'next-buffer)
+;; (global-set-key (kbd "C-,") 'previous-buffer)
+;; (global-set-key (kbd "C-.") 'next-buffer)
 
 ;; C-w cut, M-w copy, C-y paste, C-k kill line.
 
@@ -60,8 +52,6 @@
 
 (global-set-key (kbd "M--") 'undo-tree-redo)
 (global-set-key (kbd "C--") 'undo-tree-undo)
-
-(global-set-key (kbd "M-s") 'save-buffer)
 
 ;;----------------------------------------------------------------------------
 ;; Redefine some default keys.
@@ -124,8 +114,10 @@
 (global-set-key (kbd "M-[") 'shift-region-left)
 (global-set-key (kbd "M-]") 'shift-region-right)
 
-(global-set-key (kbd "M-<down>") 'scroll-up-line)
-(global-set-key (kbd "M-<up>") 'scroll-down-line)
+;; Reslove key conflit with paredit.
+(global-set-key (kbd "M-<up>") 'scroll-up-line)
+(global-set-key (kbd "M-<down>") 'scroll-down-line)
+(global-set-key (kbd "M-s") 'save-buffer)
 
 (global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
 

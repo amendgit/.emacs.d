@@ -1,6 +1,5 @@
 (require-package 'projectile)
 (require-package 'helm-projectile)
-
 (require 'projectile)
 (require 'helm)
 (require 'helm-projectile)
