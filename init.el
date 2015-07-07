@@ -112,6 +112,7 @@
                              init-backup
                              init-extra
                              ))
+(setq idle-require-idle-delay 0)
 (idle-require-mode 1) ;; starts loading
 ;; }}
 
