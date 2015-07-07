@@ -18,7 +18,7 @@
 (add-hook 'helm-before-initialize-hook 'helm-toggle-header-line)
 
 ;; {{ Helm window always opens in current window we are working on, from @tuhdo
-(setq helm-echo-input-in-header-line t)
+(setq helm-echo-input-in-header-line nil)
 (defun helm-hide-minibuffer-maybe ()
   (when (with-helm-buffer helm-echo-input-in-header-line)
     (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
