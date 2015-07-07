@@ -87,7 +87,13 @@
 
 
 (require-package 'undo-tree)
+(eval-after-load 'undo-tree
+  '(progn
+     ;; Conflict key
+     (define-key undo-tree-map (kbd "C-/") nil)))
+
 (global-undo-tree-mode)
+
 (diminish 'undo-tree-mode)
 
 
