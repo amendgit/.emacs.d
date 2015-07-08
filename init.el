@@ -89,7 +89,7 @@
 (require 'init-crontab)
 (require 'init-textile)
 (require 'init-python-mode)
-;; (require 'init-lisp)
+
 (require 'init-slime)
 (require 'init-proxies)
 (require 'init-dash)

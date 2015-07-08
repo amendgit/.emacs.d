@@ -27,6 +27,7 @@
 
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-find-file 'helm-projectile-find-file)
+(global-set-key [remap switch-to-buffer] 'helm-projectile-switch-to-buffer)
 (helm-projectile-on)
 
 (provide 'init-projectile)
