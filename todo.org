@@ -7,7 +7,7 @@
 #+LATEX_HEADER: \setCJKsansfont[BoldFont=STHeiti]{STXihei}
 #+LATEX_HEADER: \setCJKmonofont{STFangsong}
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/solarized-light.css"/
-#+TITLE: emacs confit todo list
+#+TITLE: emacs.d todo list
 
 * TODO Make the default frame origin and position resonable.
 
