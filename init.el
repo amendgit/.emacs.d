@@ -84,7 +84,6 @@
                              init-recentf
                              init-neotree
 
-                             init-ido
                              init-mmm
                              init-fonts
                              init-vc
