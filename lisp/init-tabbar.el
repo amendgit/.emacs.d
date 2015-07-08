@@ -2,6 +2,7 @@
 
 (require 'tabbar)
 
+(setq tabbar-use-images nil)
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (setq tabbar-ruler-global-ruler t) ; if you want a global ruler
 (setq tabbar-ruler-popup-menu nil) ; If you want a popup menu.
@@ -535,25 +536,25 @@ Optional argument TYPE is a mouse click event type (see the function
 ;   "Return non-nil if EVENT is a mouse drag event."
 ;   (memq 'drag (event-modifiers event)))
 
-; (defun tabbar-select-tab-callback (event)
-;   "Handle a mouse EVENT on a tab.
-; Pass mouse click events on a tab to `tabbar-click-on-tab'."
-;   (interactive "@e")
-;   (cond 
-;     ((tabbar-click-p event)
-;       (let ((target (posn-string (event-start event))))
-;         (tabbar-click-on-tab
-;           (get-text-property (cdr target) 'tabbar-tab (car target))
-;           event
-;           (get-text-property (cdr target) 'tabbar-action (car target)))))
-;     ((tabbar-drag-p event)
-;       (let ((start-target (posn-string (event-start event)))
-;             (end-target (posn-string (event-end event))))
-;         (tabbar-drag-tab
-;           (get-text-property (cdr start-target) 'tabbar-tab (car start-target))
-;           (get-text-property (cdr end-target) 'tabbar-tab (car end-target))
-;           event)))
-;   ))
+(defun tabbar-select-tab-callback (event)
+  "Handle a mouse EVENT on a tab.
+Pass mouse click events on a tab to `tabbar-click-on-tab'."
+  (interactive "@e")
+  (cond 
+    ((tabbar-click-p event)
+      (let ((target (posn-string (event-start event))))
+        (tabbar-click-on-tab
+          (get-text-property (cdr target) 'tabbar-tab (car target))
+          event
+          (get-text-property (cdr target) 'tabbar-action (car target)))))
+    ((tabbar-drag-p event)
+      (let ((start-target (posn-string (event-start event)))
+            (end-target (posn-string (event-end event))))
+        (tabbar-drag-tab
+          (get-text-property (cdr start-target) 'tabbar-tab (car start-target))
+          (get-text-property (cdr end-target) 'tabbar-tab (car end-target))
+          event)))
+  ))
 
 ; (defun tabbar-drag-tab (dragged-tab dropped-tab event)
 ;   "Handle DRAGGED-TAB dragged-and-dropped onto DROPPED-TAB.
