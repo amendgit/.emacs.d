@@ -83,6 +83,7 @@
 (require 'init-fonts)
 (require 'init-vc)
 (require 'init-darcs)
+(require 'init-tabbar)
 (require 'init-git)
 (require 'init-github)
 (require 'init-compile)

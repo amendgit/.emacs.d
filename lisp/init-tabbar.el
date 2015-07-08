@@ -586,239 +586,239 @@ Optional argument TYPE is a mouse click event type (see the function
 ;     (tabbar-display-update)
 ;     ))))
 
-; (defsubst tabbar-line-tab (tab &optional not-last sel)
-;   "Return the display representation of tab TAB.
-; That is, a propertized string used as an `header-line-format' template
-; element.
-; Call `tabbar-tab-label-function' to obtain a label for TAB."
-;   (let* ( (selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
-;           (modified-p (buffer-modified-p (tabbar-tab-value tab)))
-;           (close-button-image (tabbar-find-image 
-;                                `((:type xpm :data ,(tabbar-ruler-image :type 'close :disabled (not modified-p)
-;                                                                        :color (if (eq tab sel)
-;                                                                                   (face-attribute 'default :foreground)
-;                                                                                 "gray10"))))))
-;           (keymap (tabbar-make-tab-keymap tab))
-;           (separator-image (if tabbar-ruler-fancy-tab-separator
-;                                (tabbar-find-image
-;                                 `((:type xpm :data
-;                                          ,(tabbar-ruler-tab-separator-image
-;                                            (if (eq tab sel)
-;                                                'tabbar-selected
-;                                              'tabbar-unselected)
-;                                            (if not-last
-;                                                (if (eq (car not-last) sel)
-;                                                    'tabbar-selected
-;                                                  'tabbar-unselected) nil)
-;                                            nil
-;                                            (if (and not-last
-;                                                     (eq (car not-last) sel))
-;                                                t nil)))))
-;                              nil))
-;           (face (if selected-p
-;                     (if modified-p
-;                         'tabbar-selected-modified
-;                       'tabbar-selected)
-;                   (if modified-p
-;                       'tabbar-unselected-modified
-;                     'tabbar-unselected))))
-;     (concat
-;      (propertize " " 'face face
-;                  'tabbar-tab tab
-;                  'local-map keymap
-;                  'help-echo 'tabbar-help-on-tab
-;                  'face face
-;                  'pointer 'hand)
-;      (propertize 
-;       (if tabbar-tab-label-function
-;           (funcall tabbar-tab-label-function tab)
-;         tab)
-;       'tabbar-tab tab
-;       'local-map keymap
-;       'help-echo 'tabbar-help-on-tab
-;       'mouse-face 'tabbar-highlight
-;       'face face
-;       'pointer 'hand)
-;      (propertize (if (and modified-p tabbar-ruler-modified-symbol)
-;                      (with-temp-buffer
-;                        (condition-case err
-;                            (ucs-insert "207A")
-;                          (error
-;                           (condition-case err
-;                               (insert-char 0x207A)
-;                             (error (insert "*")))))
-;                        (insert " ")
-;                        (buffer-substring (point-min) (point-max))) " ")
-;                  'face face
-;                  'tabbar-tab tab
-;                  'local-map keymap
-;                  'help-echo 'tabbar-help-on-tab
-;                  'face face
-;                  'pointer 'hand)
-;      (if tabbar-ruler-fancy-close-image
-;          (propertize (with-temp-buffer
-;                        (condition-case err
-;                            (ucs-insert "00D7")
-;                          (error
-;                           (condition-case err
-;                               (insert-char #x00D7)
-;                             (error (insert "x")))))
-;                        (buffer-string))
-;                      'display (tabbar-normalize-image close-button-image 0)
-;                      'face face
-;                      'pointer 'hand
-;                      'tabbar-tab tab
-;                      'local-map keymap
-;                      'tabbar-action 'close-tab)
-;        (propertize
-;         (with-temp-buffer
-;           (condition-case err
-;               (ucs-insert "00D7")
-;             (error (condition-case err
-;                        (insert-char #x00D7)
-;                      (error (insert "x")))))
-;           (insert " ")
-;           (buffer-string))
-;         'face face
-;         'pointer 'hand
-;         'tabbar-tab tab
-;         'local-map keymap
-;         'tabbar-action 'close-tab))
-;      (if tabbar-ruler-fancy-tab-separator
-;          (propertize "|"
-;                      'display (tabbar-normalize-image separator-image))
-;        tabbar-separator-value))))
+(defsubst tabbar-line-tab (tab &optional not-last sel)
+  "Return the display representation of tab TAB.
+That is, a propertized string used as an `header-line-format' template
+element.
+Call `tabbar-tab-label-function' to obtain a label for TAB."
+  (let* ( (selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
+          (modified-p (buffer-modified-p (tabbar-tab-value tab)))
+          (close-button-image (tabbar-find-image 
+                               `((:type xpm :data ,(tabbar-ruler-image :type 'close :disabled (not modified-p)
+                                                                       :color (if (eq tab sel)
+                                                                                  (face-attribute 'default :foreground)
+                                                                                "gray10"))))))
+          (keymap (tabbar-make-tab-keymap tab))
+          (separator-image (if tabbar-ruler-fancy-tab-separator
+                               (tabbar-find-image
+                                `((:type xpm :data
+                                         ,(tabbar-ruler-tab-separator-image
+                                           (if (eq tab sel)
+                                               'tabbar-selected
+                                             'tabbar-unselected)
+                                           (if not-last
+                                               (if (eq (car not-last) sel)
+                                                   'tabbar-selected
+                                                 'tabbar-unselected) nil)
+                                           nil
+                                           (if (and not-last
+                                                    (eq (car not-last) sel))
+                                               t nil)))))
+                             nil))
+          (face (if selected-p
+                    (if modified-p
+                        'tabbar-selected-modified
+                      'tabbar-selected)
+                  (if modified-p
+                      'tabbar-unselected-modified
+                    'tabbar-unselected))))
+    (concat
+     (propertize " " 'face face
+                 'tabbar-tab tab
+                 'local-map keymap
+                 'help-echo 'tabbar-help-on-tab
+                 'face face
+                 'pointer 'hand)
+     (propertize 
+      (if tabbar-tab-label-function
+          (funcall tabbar-tab-label-function tab)
+        tab)
+      'tabbar-tab tab
+      'local-map keymap
+      'help-echo 'tabbar-help-on-tab
+      'mouse-face 'tabbar-highlight
+      'face face
+      'pointer 'hand)
+     (propertize (if (and modified-p tabbar-ruler-modified-symbol)
+                     (with-temp-buffer
+                       (condition-case err
+                           (ucs-insert "207A")
+                         (error
+                          (condition-case err
+                              (insert-char 0x207A)
+                            (error (insert "*")))))
+                       (insert " ")
+                       (buffer-substring (point-min) (point-max))) " ")
+                 'face face
+                 'tabbar-tab tab
+                 'local-map keymap
+                 'help-echo 'tabbar-help-on-tab
+                 'face face
+                 'pointer 'hand)
+     (if tabbar-ruler-fancy-close-image
+         (propertize (with-temp-buffer
+                       (condition-case err
+                           (ucs-insert "00D7")
+                         (error
+                          (condition-case err
+                              (insert-char #x00D7)
+                            (error (insert "x")))))
+                       (buffer-string))
+                     'display (tabbar-normalize-image close-button-image 0)
+                     'face face
+                     'pointer 'hand
+                     'tabbar-tab tab
+                     'local-map keymap
+                     'tabbar-action 'close-tab)
+       (propertize
+        (with-temp-buffer
+          (condition-case err
+              (ucs-insert "00D7")
+            (error (condition-case err
+                       (insert-char #x00D7)
+                     (error (insert "x")))))
+          (insert " ")
+          (buffer-string))
+        'face face
+        'pointer 'hand
+        'tabbar-tab tab
+        'local-map keymap
+        'tabbar-action 'close-tab))
+     (if tabbar-ruler-fancy-tab-separator
+         (propertize "|"
+                     'display (tabbar-normalize-image separator-image))
+       tabbar-separator-value))))
 
-; (defsubst tabbar-line-format (tabset)
-;   "Return the `header-line-format' value to display TABSET."
-;   (let* ((sel (tabbar-selected-tab tabset))
-;          (tabs (tabbar-view tabset))
-;          (padcolor (tabbar-background-color))
-;          atsel elts
-;          (separator-image (if tabbar-ruler-fancy-tab-separator
-;                               (tabbar-find-image
-;                                `((:type xpm :data
-;                                         ,(tabbar-ruler-tab-separator-image
-;                                           nil
-;                                           (if (eq (car tabs) sel)
-;                                               'tabbar-selected
-;                                             'tabbar-unselected)))))
-;                             nil)))
-;     ;; Initialize buttons and separator values.
-;     (or tabbar-separator-value
-;         (tabbar-line-separator))
-;     (or tabbar-home-button-value
-;         (tabbar-line-button 'home))
-;     (or tabbar-scroll-left-button-value
-;         (tabbar-line-button 'scroll-left))
-;     (or tabbar-scroll-right-button-value
-;         (tabbar-line-button 'scroll-right))
-;     ;; Track the selected tab to ensure it is always visible.
-;     (when tabbar--track-selected
-;       (while (not (memq sel tabs))
-;         (tabbar-scroll tabset -1)
-;         (setq tabs (tabbar-view tabset)))
-;       (while (and tabs (not atsel))
-;         (if tabbar-ruler-fancy-tab-separator
-;             (setq elts  (cons (tabbar-line-tab (car tabs) (cdr tabs) sel) elts)
-;                   atsel (eq (car tabs) sel)
-;                   tabs  (cdr tabs))
-;           (setq elts  (cons (tabbar-line-tab (car tabs)) elts)
-;                 atsel (eq (car tabs) sel)
-;                 tabs  (cdr tabs))))
-;       (setq elts (nreverse elts))
-;       ;; At this point the selected tab is the last elt in ELTS.
-;       ;; Scroll TABSET and ELTS until the selected tab becomes
-;       ;; visible.
-;       (with-temp-buffer
-;         (let ((truncate-partial-width-windows nil)
-;               (inhibit-modification-hooks t)
-;               deactivate-mark ;; Prevent deactivation of the mark!
-;               start)
-;           (setq truncate-lines nil
-;                 buffer-undo-list t)
-;           (apply 'insert (tabbar-line-buttons tabset))
-;           (setq start (point))
-;           (while (and (cdr elts) ;; Always show the selected tab!
-;                       (progn
-;                         (delete-region start (point-max))
-;                         (goto-char (point-max))
-;                         (apply 'insert elts)
-;                         (goto-char (point-min))
-;                         (> (vertical-motion 1) 0)))
-;             (tabbar-scroll tabset 1)
-;             (setq elts (cdr elts)))))
-;       (setq elts (nreverse elts))
-;       (setq tabbar--track-selected nil))
-;     ;; Format remaining tabs.
-;     (while tabs
-;       (if tabbar-ruler-fancy-tab-separator
-;           (setq elts (cons (tabbar-line-tab (car tabs) (cdr tabs) sel) elts)
-;                 tabs (cdr tabs))
-;         (setq elts (cons (tabbar-line-tab (car tabs)) elts)
-;               tabs (cdr tabs))))
-;     ;; Cache and return the new tab bar.
-;     (if tabbar-ruler-fancy-tab-separator
-;         (tabbar-set-template
-;          tabset
-;          (list (tabbar-line-buttons tabset)
-;                (propertize "|"
-;                            'display (tabbar-normalize-image separator-image))
-;                (nreverse elts)
-;                (propertize "%-"
-;                            'face (list :background padcolor
-;                                        :foreground padcolor)
-;                            'pointer 'arrow)))
-;       (tabbar-set-template
-;        tabset
-;        (list (tabbar-line-buttons tabset)
-;              (nreverse elts)
-;              (propertize "%-"
-;                          'face (list :background padcolor
-;                                      :foreground padcolor)
-;                          'pointer 'arrow))))))
+(defsubst tabbar-line-format (tabset)
+  "Return the `header-line-format' value to display TABSET."
+  (let* ((sel (tabbar-selected-tab tabset))
+         (tabs (tabbar-view tabset))
+         (padcolor (tabbar-background-color))
+         atsel elts
+         (separator-image (if tabbar-ruler-fancy-tab-separator
+                              (tabbar-find-image
+                               `((:type xpm :data
+                                        ,(tabbar-ruler-tab-separator-image
+                                          nil
+                                          (if (eq (car tabs) sel)
+                                              'tabbar-selected
+                                            'tabbar-unselected)))))
+                            nil)))
+    ;; Initialize buttons and separator values.
+    (or tabbar-separator-value
+        (tabbar-line-separator))
+    (or tabbar-home-button-value
+        (tabbar-line-button 'home))
+    (or tabbar-scroll-left-button-value
+        (tabbar-line-button 'scroll-left))
+    (or tabbar-scroll-right-button-value
+        (tabbar-line-button 'scroll-right))
+    ;; Track the selected tab to ensure it is always visible.
+    (when tabbar--track-selected
+      (while (not (memq sel tabs))
+        (tabbar-scroll tabset -1)
+        (setq tabs (tabbar-view tabset)))
+      (while (and tabs (not atsel))
+        (if tabbar-ruler-fancy-tab-separator
+            (setq elts  (cons (tabbar-line-tab (car tabs) (cdr tabs) sel) elts)
+                  atsel (eq (car tabs) sel)
+                  tabs  (cdr tabs))
+          (setq elts  (cons (tabbar-line-tab (car tabs)) elts)
+                atsel (eq (car tabs) sel)
+                tabs  (cdr tabs))))
+      (setq elts (nreverse elts))
+      ;; At this point the selected tab is the last elt in ELTS.
+      ;; Scroll TABSET and ELTS until the selected tab becomes
+      ;; visible.
+      (with-temp-buffer
+        (let ((truncate-partial-width-windows nil)
+              (inhibit-modification-hooks t)
+              deactivate-mark ;; Prevent deactivation of the mark!
+              start)
+          (setq truncate-lines nil
+                buffer-undo-list t)
+          (apply 'insert (tabbar-line-buttons tabset))
+          (setq start (point))
+          (while (and (cdr elts) ;; Always show the selected tab!
+                      (progn
+                        (delete-region start (point-max))
+                        (goto-char (point-max))
+                        (apply 'insert elts)
+                        (goto-char (point-min))
+                        (> (vertical-motion 1) 0)))
+            (tabbar-scroll tabset 1)
+            (setq elts (cdr elts)))))
+      (setq elts (nreverse elts))
+      (setq tabbar--track-selected nil))
+    ;; Format remaining tabs.
+    (while tabs
+      (if tabbar-ruler-fancy-tab-separator
+          (setq elts (cons (tabbar-line-tab (car tabs) (cdr tabs) sel) elts)
+                tabs (cdr tabs))
+        (setq elts (cons (tabbar-line-tab (car tabs)) elts)
+              tabs (cdr tabs))))
+    ;; Cache and return the new tab bar.
+    (if tabbar-ruler-fancy-tab-separator
+        (tabbar-set-template
+         tabset
+         (list (tabbar-line-buttons tabset)
+               (propertize "|"
+                           'display (tabbar-normalize-image separator-image))
+               (nreverse elts)
+               (propertize "%-"
+                           'face (list :background padcolor
+                                       :foreground padcolor)
+                           'pointer 'arrow)))
+      (tabbar-set-template
+       tabset
+       (list (tabbar-line-buttons tabset)
+             (nreverse elts)
+             (propertize "%-"
+                         'face (list :background padcolor
+                                     :foreground padcolor)
+                         'pointer 'arrow))))))
 
-; (defface tabbar-selected-modified
-;   '((t
-;      :inherit tabbar-selected
-;      :foreground "DarkOrange3"
-;      :weight bold))
-;    "Face used for selected tabs."
-;   :group 'tabbar)
+(defface tabbar-selected-modified
+  '((t
+     :inherit tabbar-selected
+     :foreground "DarkOrange3"
+     :weight bold))
+   "Face used for selected tabs."
+  :group 'tabbar)
 
-; (defface tabbar-unselected-modified
-;   '((t
-;      :inherit tabbar-unselected
-;      :foreground "DarkOrange3"
-;      :weight bold))
-;    "Face used for unselected tabs."
-;   :group 'tabbar)
+(defface tabbar-unselected-modified
+  '((t
+     :inherit tabbar-unselected
+     :foreground "DarkOrange3"
+     :weight bold))
+   "Face used for unselected tabs."
+  :group 'tabbar)
 
-; (defface tabbar-key-binding '((t
-;                                :foreground "white"))
-;   "Face for unselected, highlighted tabs."
-;   :group 'tabbar)
+(defface tabbar-key-binding '((t
+                               :foreground "white"))
+  "Face for unselected, highlighted tabs."
+  :group 'tabbar)
 
-; ;; Hooks based on yswzing's hooks, but modified for this function state.
-; ;; called each time the modification state of the buffer changed
-; (defun tabbar-ruler-modification-state-change ()
-;   (tabbar-set-template tabbar-current-tabset nil)
-;   (tabbar-display-update))
+;; Hooks based on yswzing's hooks, but modified for this function state.
+;; called each time the modification state of the buffer changed
+(defun tabbar-ruler-modification-state-change ()
+  (tabbar-set-template tabbar-current-tabset nil)
+  (tabbar-display-update))
 
-; ;; first-change-hook is called BEFORE the change is made
-; (defun tabbar-ruler-on-buffer-modification ()
-;   (set-buffer-modified-p t)
-;   (tabbar-ruler-modification-state-change))
-; (add-hook 'after-save-hook 'tabbar-ruler-modification-state-change)
+;; first-change-hook is called BEFORE the change is made
+(defun tabbar-ruler-on-buffer-modification ()
+  (set-buffer-modified-p t)
+  (tabbar-ruler-modification-state-change))
+(add-hook 'after-save-hook 'tabbar-ruler-modification-state-change)
 
-; (defcustom tabbar-ruler-global-tabbar 't
-;   "Should tabbar-ruler have a global tabbar?"
-;   :type 'boolean
-;   :group 'tabbar-ruler)
-; (defcustom tabbar-ruler-global-ruler nil
-;   "Should tabbar-ruler have a global ruler?"
-;   :type 'boolean
-;   :group 'tabbar-ruler)
+(defcustom tabbar-ruler-global-tabbar 't
+  "Should tabbar-ruler have a global tabbar?"
+  :type 'boolean
+  :group 'tabbar-ruler)
+(defcustom tabbar-ruler-global-ruler nil
+  "Should tabbar-ruler have a global ruler?"
+  :type 'boolean
+  :group 'tabbar-ruler)
 ; (defcustom tabbar-ruler-popup-menu nil
 ;   "Should tabbar-ruler have a popup menu.  As mouse moves toward top of window, the menu pops up."
 ;   :type 'boolean

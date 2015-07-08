@@ -4,7 +4,7 @@
 
 (custom-set-variables
  '(desktop-save-mode t)
- '(desktop-restore-eager 1))
+ '(desktop-restore-eager 3))
 
 (defadvice desktop-read (around time-restore activate)
     (let ((start-time (current-time)))
