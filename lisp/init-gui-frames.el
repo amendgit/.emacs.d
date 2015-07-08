@@ -8,6 +8,13 @@
 
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
 
+;;----------------------------------------------------------------------------
+;; Set default frame size and position.
+;;----------------------------------------------------------------------------
+;; (setq default-frame-alist
+;;      '((top . 10) (left . 80)
+;;        (width . 95) (height . 50)
+;;        (font . "Monaco")))
 
 ;;----------------------------------------------------------------------------
 ;; Suppress GUI features
@@ -31,6 +38,7 @@
   (tool-bar-mode -1))
 (when (fboundp 'set-scroll-bar-mode)
   (set-scroll-bar-mode nil))
+
 
 (let ((no-border '(internal-border-width . 0)))
   (add-to-list 'default-frame-alist no-border)

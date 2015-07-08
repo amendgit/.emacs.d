@@ -71,48 +71,35 @@
 (require 'init-linum)
 
 (require 'idle-require)
-;; {{ idle require other stuff
-(setq idle-require-idle-delay 2)
-(setq idle-require-symbols '(init-xterm
-                             init-hippie-expand
-
-                             init-golang
-                             init-org
-                             init-markdown
-
-                             init-windows
-                             init-recentf
-                             init-neotree
-
-                             init-mmm
-                             init-fonts
-                             init-vc
-                             init-darcs
-                             init-git
-                             init-github
-
-                             init-compile
-                             init-crontab
-                             init-textile
-                             init-python-mode
-                             init-lisp
-                             init-slime
-                             init-proxies
-
-                             init-isearch
-                             init-dash
-                             init-ledger
-                             init-grep
-                             init-ibuffer
-                             init-flycheck
-                             init-uniquify
-                             init-spelling
-                             init-backup
-                             init-extra
-                             ))
-(setq idle-require-idle-delay 0)
-(idle-require-mode 1) ;; starts loading
-;; }}
+(require 'init-xterm)
+(require 'init-hippie-expand)
+(require 'init-golang)
+(require 'init-org)
+(require 'init-markdown)
+(require 'init-windows)
+(require 'init-recentf)
+(require 'init-neotree)
+(require 'init-mmm)
+(require 'init-fonts)
+(require 'init-vc)
+(require 'init-darcs)
+(require 'init-git)
+(require 'init-github)
+(require 'init-compile)
+(require 'init-crontab)
+(require 'init-textile)
+(require 'init-python-mode)
+;; (require 'init-lisp)
+(require 'init-slime)
+(require 'init-proxies)
+(require 'init-dash)
+(require 'init-ledger)
+(require 'init-grep)
+(require 'init-ibuffer)
+(require 'init-flycheck)
+(require 'init-uniquify)
+(require 'init-backup)
+(require 'init-extra)
 
 (require 'init-common-lisp)
 

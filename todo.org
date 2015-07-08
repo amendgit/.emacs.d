@@ -1,0 +1,18 @@
+#+STARTUP: indent
+#+options: num:nil
+# -*- mode: org; -*-
+#+LATEX_HEADER: \documentclass[UTF8]{ctexart}
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+LATEX_HEADER: \setCJKmainfont[BoldFont=STZhongsong, ItalicFont=STKaiti]{STSong}
+#+LATEX_HEADER: \setCJKsansfont[BoldFont=STHeiti]{STXihei}
+#+LATEX_HEADER: \setCJKmonofont{STFangsong}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/solarized-light.css"/
+#+TITLE: emacs.d todo list
+
+* TODO Make the default frame origin and position resonable.
+
+* TODO Write a helm-switch-to-buffer-other-frame to replace switch-to-buffer-in-other-frame.
+
+* TODO Write a helm-switch-to-buffer-other-window to replace switch-to-buffer-in-other-window.
+
+* TODO ignore * buffers when switch buffer use 'C-x <left>' and 'C-x <right>'.
