@@ -24,7 +24,6 @@
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-echo-area-message t)
 
-
 ;;----------------------------------------------------------------------------
 ;; Show a marker in the left fringe for lines not in the buffer
 ;;----------------------------------------------------------------------------

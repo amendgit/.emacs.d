@@ -22,4 +22,7 @@
 ;; undo.
 (global-set-key (kbd "C-/") 'comment-or-uncomment-region)
 
+;; Remap kill buffer to kill this buffer, cause kill this buffer more frequent.
+(global-set-key "\C-xk" 'kill-this-buffer)
+
 (provide 'init-user-key)
