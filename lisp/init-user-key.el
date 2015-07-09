@@ -6,7 +6,6 @@
 (global-set-key (kbd "C-z p") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-z F") 'helm-dired-action)
 (global-set-key (kbd "C-z s") 'helm-projectile-grep)
-(global-set-key (kbd "C-z f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-z z") 'helm-mini)
 (global-set-key (kbd "C-z y") 'helm-c-yas-complete)
 (global-set-key (kbd "C-z t") 'neotree-toggle)
@@ -16,8 +15,8 @@
 (global-set-key (kbd "C-z e") 'eshell)
 (global-set-key (kbd "C-z j") 'helm-imenu)
 
-(global-set-key (kbd "M-<up>") 'scroll-up-line)
-(global-set-key (kbd "M-<down>") 'scroll-down-line)
+(global-set-key (kbd "M-<up>") 'scroll-down-line)
+(global-set-key (kbd "M-<down>") 'scroll-up-line)
 (global-set-key (kbd "M-s") 'save-buffer)
 
 (provide 'init-user-key)

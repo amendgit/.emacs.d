@@ -28,6 +28,7 @@
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-find-file 'helm-projectile-find-file)
 (global-set-key [remap switch-to-buffer] 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "C-x C-f") 'helm-projectile-find-file)
 (helm-projectile-on)
 
 (provide 'init-projectile)

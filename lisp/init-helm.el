@@ -78,6 +78,5 @@
 ;; }}
 
 (global-set-key [remap execute-extended-command] 'helm-M-x)
-(global-set-key [remap find-file] 'helm-find-files)
 
 (provide 'init-helm)
