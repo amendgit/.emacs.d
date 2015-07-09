@@ -1,8 +1,5 @@
 (require-package 'projectile)
 (require-package 'helm-projectile)
-(require 'projectile)
-(require 'helm)
-(require 'helm-projectile)
 
 (defun projectile-hashify-files (files-list)
   "Make the list of project files FILES-LIST ido friendly."

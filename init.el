@@ -18,9 +18,9 @@
 ;;----------------------------------------------------------------------------
 ;; By default Emacs will initiate GC every 0.76 MB allocated
 ;; (gc-cons-threshold == 800000).
-;; we increase this to 512MB
+;; we increase this to 1GB
 ;; @see http://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html
-(setq-default gc-cons-threshold (* 1024 1024 512)
+(setq-default gc-cons-threshold (* 1024 1024 1024)
               gc-cons-percentage 0.5)
 
 ;;----------------------------------------------------------------------------
@@ -80,7 +80,6 @@
 (require 'init-darcs)
 (require 'init-tabbar)
 (require 'init-git)
-(require 'init-github)
 (require 'init-compile)
 (require 'init-crontab)
 (require 'init-textile)
@@ -113,19 +112,6 @@
 ;; (require 'server)
 ;; (unless (server-running-p)
 ;;   (server-start))
-
-;;----------------------------------------------------------------------------
-;; Variables configured via the interactive 'customize' interface
-;;----------------------------------------------------------------------------
-(when (file-exists-p custom-file)
-  (load custom-file))
-
-;;----------------------------------------------------------------------------
-;; Allow users to provide an optional "init-local" containing personal settings
-;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
-  (error "Please move init-local.el to ~/.emacs.d/lisp"))
-(require 'init-local nil t)
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)

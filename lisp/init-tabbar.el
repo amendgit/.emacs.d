@@ -2,7 +2,7 @@
 
 (require 'tabbar)
 
-(setq tabbar-use-images nil)
+(setq tabbar-use-images t)
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (setq tabbar-ruler-global-ruler t) ; if you want a global ruler
 (setq tabbar-ruler-popup-menu nil) ; If you want a popup menu.
@@ -1183,39 +1183,39 @@ Call `tabbar-tab-label-function' to obtain a label for TAB."
 ;               (setq tabbar-ruler-tabbar-off nil)))))
 ;  tabbar-display-functions)
 
-; ;;;###autoload
-; (defun tabbar-ruler-up (&optional arg)
-;   "Tabbar press up key."
-;   (interactive "p")
-;   (setq current-prefix-arg current-prefix-arg)
-;   (call-interactively 'tabbar-ruler-tabbar-press-home))
+;;;###autoload
+(defun tabbar-ruler-up (&optional arg)
+  "Tabbar press up key."
+  (interactive "p")
+  (setq current-prefix-arg current-prefix-arg)
+  (call-interactively 'tabbar-ruler-tabbar-press-home))
 
-; ;;;###autoload
-; (defun tabbar-ruler-forward (&optional arg)
-;   "Forward ruler. Takes into consideration if the home-key was pressed.
-; This is based on the variable `tabbar--buffer-show-groups'"
-;   (interactive "p")
-;   (cond
-;    (tabbar--buffer-show-groups
-;     (setq current-prefix-arg current-prefix-arg)
-;     (call-interactively 'tabbar-ruler-tabbar-forward-group)
-;     (tabbar-ruler-tabbar-press-home))
-;    (t
-;     (setq current-prefix-arg current-prefix-arg)
-;     (call-interactively 'tabbar-ruler-tabbar-forward-tab))))
+;;;###autoload
+(defun tabbar-ruler-forward (&optional arg)
+  "Forward ruler. Takes into consideration if the home-key was pressed.
+This is based on the variable `tabbar--buffer-show-groups'"
+  (interactive "p")
+  (cond
+   (tabbar--buffer-show-groups
+    (setq current-prefix-arg current-prefix-arg)
+    (call-interactively 'tabbar-ruler-tabbar-forward-group)
+    (tabbar-ruler-tabbar-press-home))
+   (t
+    (setq current-prefix-arg current-prefix-arg)
+    (call-interactively 'tabbar-ruler-tabbar-forward-tab))))
 
-; ;;;###autoload
-; (defun tabbar-ruler-backward (&optional arg)
-;   "Backward ruler.  Takes into consideration if the home-key was pressed."
-;   (interactive "p")
-;   (cond
-;    (tabbar--buffer-show-groups
-;     (setq current-prefix-arg current-prefix-arg)
-;     (call-interactively 'tabbar-ruler-tabbar-backward-group)
-;     (tabbar-ruler-tabbar-press-home))
-;    (t
-;     (setq current-prefix-arg current-prefix-arg)
-;     (call-interactively 'tabbar-ruler-tabbar-backward-tab))))
+;;;###autoload
+(defun tabbar-ruler-backward (&optional arg)
+  "Backward ruler.  Takes into consideration if the home-key was pressed."
+  (interactive "p")
+  (cond
+   (tabbar--buffer-show-groups
+    (setq current-prefix-arg current-prefix-arg)
+    (call-interactively 'tabbar-ruler-tabbar-backward-group)
+    (tabbar-ruler-tabbar-press-home))
+   (t
+    (setq current-prefix-arg current-prefix-arg)
+    (call-interactively 'tabbar-ruler-tabbar-backward-tab))))
 
 ; (when (not (fboundp 'set-temporary-overlay-map))
 ;   ;; Backport this function from newer emacs versions

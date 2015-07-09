@@ -19,4 +19,11 @@
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
 (global-set-key (kbd "M-s") 'save-buffer)
 
+;; Undo map to key 'C-x u' 'C-_' and 'C-/', I do not need so many key for Undo.
+(eval-after-load 'undo-tree
+  '(progn 
+  	 ;; Conflict key
+  	 (define-key undo-tree-map (kbd "C-/") nil)))
+(global-set-key (kbd "C-/") 'comment-or-uncomment-region)
+
 (provide 'init-user-key)
