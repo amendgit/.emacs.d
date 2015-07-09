@@ -40,10 +40,8 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
-;;----------------------------------------------------------------------------
-;; Allow users to provide an optional "init-preload-local.el"
-;;----------------------------------------------------------------------------
-(require 'init-preload-local nil t)
+(require 'init-themes)
+(require 'init-sessions)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
@@ -54,17 +52,14 @@
 (require-package 'diminish)
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
-(require-package 'idle-require)
 
 (require 'init-frame-hooks)
 
-(require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-editing-utils)
 
 (require 'init-auto-complete)
-(require 'init-sessions)
 
 (require 'init-helm)
 (require 'init-projectile)
