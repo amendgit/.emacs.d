@@ -1097,33 +1097,33 @@ Call `tabbar-tab-label-function' to obtain a label for TAB."
 ;                      ((buffer-live-p b) b)))
 ;                 (buffer-list))))
 
-; (defvar tabbar-ruler-projectile-tabbar-buffer-group-calc nil
-;   "Buffer group for projectile.  Should be buffer local and speed up calculation of buffer groups.")
-; (defun tabbar-ruler-projectile-tabbar-buffer-groups ()
-;   "Return the list of group names BUFFER belongs to.
-;     Return only one group for each buffer."
+(defvar tabbar-ruler-projectile-tabbar-buffer-group-calc nil
+  "Buffer group for projectile.  Should be buffer local and speed up calculation of buffer groups.")
+(defun tabbar-ruler-projectile-tabbar-buffer-groups ()
+  "Return the list of group names BUFFER belongs to.
+    Return only one group for each buffer."
   
-;   (if tabbar-ruler-projectile-tabbar-buffer-group-calc
-;       (symbol-value 'tabbar-ruler-projectile-tabbar-buffer-group-calc)
-;     (set (make-local-variable 'tabbar-ruler-projectile-tabbar-buffer-group-calc)
+  (if tabbar-ruler-projectile-tabbar-buffer-group-calc
+      (symbol-value 'tabbar-ruler-projectile-tabbar-buffer-group-calc)
+    (set (make-local-variable 'tabbar-ruler-projectile-tabbar-buffer-group-calc)
          
-;          (cond
-;           ((or (get-buffer-process (current-buffer)) (memq major-mode '(comint-mode compilation-mode))) '("Term"))
-;           ((string-equal "*" (substring (buffer-name) 0 1)) '("Misc"))
-;           ((condition-case err
-;                (projectile-project-root)
-;              (error nil)) (list (projectile-project-name)))
-;           ((memq major-mode '(emacs-lisp-mode python-mode emacs-lisp-mode c-mode c++-mode makefile-mode lua-mode vala-mode)) '("Coding"))
-;           ((memq major-mode '(javascript-mode js-mode nxhtml-mode html-mode css-mode)) '("HTML"))
-;           ((memq major-mode '(org-mode calendar-mode diary-mode)) '("Org"))
-;           ((memq major-mode '(dired-mode)) '("Dir"))
-;           (t '("Main"))))
-;     (symbol-value 'tabbar-ruler-projectile-tabbar-buffer-group-calc)))
+         (cond
+          ((or (get-buffer-process (current-buffer)) (memq major-mode '(comint-mode compilation-mode))) '("Term"))
+          ((string-equal "*" (substring (buffer-name) 0 1)) '("Misc"))
+          ((condition-case err
+               (projectile-project-root)
+             (error nil)) (list (projectile-project-name)))
+          ((memq major-mode '(emacs-lisp-mode python-mode emacs-lisp-mode c-mode c++-mode makefile-mode lua-mode vala-mode)) '("Coding"))
+          ((memq major-mode '(javascript-mode js-mode nxhtml-mode html-mode css-mode)) '("HTML"))
+          ((memq major-mode '(org-mode calendar-mode diary-mode)) '("Org"))
+          ((memq major-mode '(dired-mode)) '("Dir"))
+          (t '("Main"))))
+    (symbol-value 'tabbar-ruler-projectile-tabbar-buffer-group-calc)))
 
-; (defun tabbar-ruler-group-by-projectile-project()
-;   "Group by projectile project."
-;   (interactive)
-;   (setq tabbar-buffer-groups-function 'tabbar-ruler-projectile-tabbar-buffer-groups))
+(defun tabbar-ruler-group-by-projectile-project()
+  "Group by projectile project."
+  (interactive)
+  (setq tabbar-buffer-groups-function 'tabbar-ruler-projectile-tabbar-buffer-groups))
 
 ; (defun tabbar-ruler-group-user-buffers-helper ()
 ;    ;; customize tabbar to have only 2 groups: emacs's and user's buffers
@@ -1312,7 +1312,7 @@ This is based on the variable `tabbar--buffer-show-groups'"
 
 ; (add-hook 'desktop-after-read-hook 'tabbar-ruler-remove-caches)
 
-; (tabbar-ruler-group-by-projectile-project)
+(tabbar-ruler-group-by-projectile-project)
 
 (tabbar-mode 1)
 

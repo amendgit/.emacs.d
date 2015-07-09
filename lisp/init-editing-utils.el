@@ -87,6 +87,22 @@
 
 (require-package 'undo-tree)
 (global-undo-tree-mode)
+
+;; negative-argment binding to key 'C--' and 'M--', one is enough. and
+;; undo-tree-redo bind to 'C-?' 'M-_', undo-tree-undo binded to 'C-_'.
+;; undo and redo if requently used and is countpart, map them to undo 'C--' and
+;; 'C-_' is more resonable.
+(global-set-key (kbd "C--") 'undo-tree-undo)
+(global-set-key (kbd "C-_") 'undo-tree-redo)
+
+;; Resolve key conflicts.
+(eval-after-load 'undo-tree
+  '(progn
+     ;; Conflict key
+     (define-key undo-tree-map (kbd "C-/") nil)
+     (define-key undo-tree-map (kbd "M-_") nil)
+     (define-key undo-tree-map (kbd "C-?") nil)))
+
 (diminish 'undo-tree-mode)
 
 
@@ -348,14 +364,10 @@ With arg N, insert N newlines."
   (if (use-region-p)
       (let ((mark (mark)))
         (save-excursion
-          (indent-rigidly (region-beginning)
-                          (region-end)
-                          distance)
-          (push-mark mark t t)g
+          (indent-rigidly (region-beginning) (region-end) distance)
+          (push-mark mark t t)
           (setq deactivate-mark nil)))
-    (indent-rigidly (line-beginning-position)
-                    (line-end-position)
-                    distance)))
+    (indent-rigidly (line-beginning-position) (line-end-position) distance)))
 
 (defun shift-region-right (count)
   (interactive "p")
@@ -364,6 +376,9 @@ With arg N, insert N newlines."
 (defun shift-region-left (count)
   (interactive "p")
   (shift-region (- count)))
+
+(global-set-key (kbd "M-[") 'shift-region-left)
+(global-set-key (kbd "M-]") 'shift-region-right)
 
 
 
