@@ -18,9 +18,9 @@
 ;;----------------------------------------------------------------------------
 ;; By default Emacs will initiate GC every 0.76 MB allocated
 ;; (gc-cons-threshold == 800000).
-;; we increase this to 1GB
+;; we increase this to 500MB
 ;; @see http://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html
-(setq-default gc-cons-threshold (* 1024 1024 1024)
+(setq-default gc-cons-threshold (* 1024 1024 512)
               gc-cons-percentage 0.5)
 
 ;;----------------------------------------------------------------------------
