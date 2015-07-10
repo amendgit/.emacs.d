@@ -18,14 +18,13 @@
       (remhash current-file files-table))
     files-table))
 
-
 (setq projectile-enable-caching t)
 (projectile-global-mode 1)
+
+(helm-projectile-on)
 
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-find-file 'helm-projectile-find-file)
 (global-set-key [remap switch-to-buffer] 'helm-projectile-switch-to-buffer)
-
-(helm-projectile-on)
 
 (provide 'init-projectile)
