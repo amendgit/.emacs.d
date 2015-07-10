@@ -18,4 +18,20 @@
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
+
+;;----------------------------------------------------------------------------
+;; Make Chinese and English the same size for org mode.
+;;----------------------------------------------------------------------------
+
+;; Font for mac
+(set-face-font 'default "Consolas 13")
+
+(if (and (fboundp 'daemonp) (daemonp))
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (set-fontset-font "fontset-default"
+                                    'chinese-gbk "KaiTi 14"))))
+  (set-fontset-font "fontset-default" 'chinese-gbk "KaiTi 14"))
+
 (provide 'init-fonts)
