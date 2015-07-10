@@ -94,7 +94,7 @@
 (require 'init-flycheck)
 (require 'init-uniquify)
 (require 'init-backup)
-(require 'init-extra)
+(require 'init-extra) ;;; Pkgs that do not need extra init.
 
 (require 'init-common-lisp)
 
