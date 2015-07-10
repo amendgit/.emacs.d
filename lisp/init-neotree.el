@@ -10,16 +10,17 @@
   (add-hook 'popwin:after-popup-hook
             (lambda () (setq neo-persist-show t))))
 
-(defun neotree-project-dir ()
-  "Open NeoTree using the git root."
+(defun neotree-projectile-toggle ()
+  "Toggle neotree using the projectile root"
   (interactive)
-  (let ((project-dir (projectile-project-root))
-        (file-name (buffer-file-name)))
-    (if project-dir
-        (progn
-          (neotree-dir project-dir)
-          (neotree-find file-name)
-          (projectile-mode))
-      (message "Could not find git project root."))))
+  (if (neo-global--window-exists-p)
+      (neotree-hide)
+    (let ((project-dir (projectile-project-root))
+         (file-name  (buffer-file-name)))
+      (if project-dir
+          (progn
+            (neotree-dir project-dir)
+            (neotree-find file-name))
+        (message "Could not find project root")))))
 
 (provide 'init-neotree)

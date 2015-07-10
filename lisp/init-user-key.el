@@ -21,7 +21,7 @@
 (global-set-key "\C-xk" 'kill-this-buffer)
 
 ;; 'M-J' didn't bound to any command.
-(global-set-key (kbd "M-J") 'neotree-project-dir)
+(global-set-key (kbd "M-J") 'neotree-projectile-toggle)
 
 ;; Both 'C-M-j' and 'M-j' bind to indent-new-comment-line, but one is fine. Remap
 ;; M-j to helm-imenu.
@@ -32,7 +32,6 @@
 
 ;; These are free keys, use them.
 (global-set-key (kbd "M-Z") 'helm-mini)
-(global-set-key (kbd "M-T") 'neotree-toggle)
 (global-set-key (kbd "M-N") 'new-frame)
 (global-set-key (kbd "M-F") 'helm-projectile-find-file)
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
