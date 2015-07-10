@@ -37,7 +37,7 @@
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 (global-set-key (kbd "M-E") 'eshell)
 (global-set-key (kbd "M-S") 'helm-projectile-grep)
-;; M-K
-;; M-H
+(global-set-key (kbd "M-H") 'helm-projectile)
+(global-set-key (kbd "M-K") 'kill-this-buffer)
 
 (provide 'init-user-key)
