@@ -31,10 +31,13 @@
 (global-set-key (kbd "C-z z") 'zap-up-to-char)
 
 ;; These are free keys, use them.
+;; Do not map "M-F" and "M-B", they move and select the region.
 (global-set-key (kbd "M-Z") 'helm-mini)
 (global-set-key (kbd "M-N") 'new-frame)
-(global-set-key (kbd "M-F") 'helm-projectile-find-file)
+(global-set-key (kbd "M-O") 'helm-projectile-find-file)
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 (global-set-key (kbd "M-E") 'eshell)
+;; M-K
+;; M-H
 
 (provide 'init-user-key)
