@@ -4,7 +4,6 @@
 (define-prefix-command 'user-key-map)
 (global-set-key (kbd "C-z") 'user-key-map)
 (global-set-key (kbd "C-z F") 'helm-dired-action)
-(global-set-key (kbd "C-z s") 'helm-projectile-grep)
 (global-set-key (kbd "C-z y") 'helm-c-yas-complete)
 
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
@@ -37,6 +36,7 @@
 (global-set-key (kbd "M-O") 'helm-projectile-find-file)
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 (global-set-key (kbd "M-E") 'eshell)
+(global-set-key (kbd "M-S") 'helm-projectile-grep)
 ;; M-K
 ;; M-H
 
