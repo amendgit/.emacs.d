@@ -9,7 +9,7 @@
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
 
-;; M-s is free key.
+;; M-s is free key, and I really need save a lot.
 (global-set-key (kbd "M-s") 'save-buffer)
 
 ;; Undo binding to key 'C-x u' 'C-_' and 'C-/', I do not need so many key for
