@@ -3,13 +3,12 @@
 ;;----------------------------------------------------------------------------
 (define-prefix-command 'user-key-map)
 (global-set-key (kbd "C-z") 'user-key-map)
-(global-set-key (kbd "C-z F") 'helm-dired-action)
-(global-set-key (kbd "C-z y") 'helm-c-yas-complete)
+(global-set-key (kbd "C-z C-y") 'helm-c-yas-complete)
 
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
 
-;; M-s is free key.
+;; M-s is free key, and I really need save a lot.
 (global-set-key (kbd "M-s") 'save-buffer)
 
 ;; Undo binding to key 'C-x u' 'C-_' and 'C-/', I do not need so many key for
@@ -31,13 +30,16 @@
 
 ;; These are free keys, use them.
 ;; Do not map "M-F" and "M-B", they move and select the region.
-(global-set-key (kbd "M-Z") 'helm-mini)
+(global-set-key (kbd "M-A") 'helm-mini)
 (global-set-key (kbd "M-N") 'new-frame)
-(global-set-key (kbd "M-O") 'helm-projectile-find-file)
+(global-set-key (kbd "M-O") 'helm-projectile)
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 (global-set-key (kbd "M-E") 'eshell)
 (global-set-key (kbd "M-S") 'helm-projectile-grep)
-(global-set-key (kbd "M-H") 'helm-projectile)
 (global-set-key (kbd "M-K") 'kill-this-buffer)
+
+(after-load 'ibuffer
+  (define-key ibuffer-mode-map (kbd "C-x C-b") nil))
+(global-set-key (kbd "C-x C-b") 'helm-projectile)
 
 (provide 'init-user-key)
