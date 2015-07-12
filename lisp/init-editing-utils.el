@@ -101,7 +101,8 @@
      ;; Conflict key
      (define-key undo-tree-map (kbd "C-/") nil)
      (define-key undo-tree-map (kbd "M-_") nil)
-     (define-key undo-tree-map (kbd "C-?") nil)))
+     (define-key undo-tree-map (kbd "C-?") nil)
+     (define-key undo-tree-map (kbd "C-_") nil)))
 
 (diminish 'undo-tree-mode)
 

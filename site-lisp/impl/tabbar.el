@@ -192,6 +192,9 @@
 
 ;;; Options
 ;;
+
+
+
 (defgroup tabbar nil
   "Display a tab bar in the header line."
   :group 'convenience)
@@ -393,10 +396,10 @@ You should use this hook to reset dependent data.")
 The result is a list just as long as the number of existing tab sets."
          (let (,result)
            (if tabbar-tabsets
-	       (mapatoms
-		#'(lambda (,tabset)
-		    (push (funcall ,function ,tabset) ,result))
-		tabbar-tabsets))
+         (mapatoms
+    #'(lambda (,tabset)
+        (push (funcall ,function ,tabset) ,result))
+    tabbar-tabsets))
            ,result)))))
 
 (defun tabbar-make-tabset (name &rest objects)
@@ -562,14 +565,7 @@ current cached copy."
 ;;; Faces
 ;;
 (defface tabbar-default
-  '(
-    ;;(((class color grayscale) (background light))
-    ;; :inherit variable-pitch
-    ;; :height 0.8
-    ;; :foreground "gray50"
-    ;; :background "grey75"
-    ;; )
-    (((class color grayscale) (background dark))
+  '((((class color grayscale) (background dark))
      :inherit variable-pitch
      :height 0.8
      :foreground "grey75"
@@ -703,113 +699,15 @@ is derived from it.")
 (defvar tabbar-home-button-value nil
   "Value of the home button.")
 
-(defconst tabbar-home-button-enabled-image
-  '((:type pbm :data "\
-P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 0
-6 0 255 255 255 255 255 255 255 255 255 255 9 130 9 255 255 255 255
-255 255 255 255 255 255 26 130 26 255 255 255 255 255 255 255 0 9 26
-41 130 41 26 9 0 255 255 255 255 5 145 140 135 130 125 120 115 5 255
-255 255 255 0 9 26 41 130 41 26 9 0 255 255 255 255 255 255 255 26 130
-26 255 255 255 255 255 255 255 255 255 255 9 130 9 255 255 255 255 255
-255 255 255 255 255 0 6 0 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255
-"))
-  "Default image for the enabled home button.")
-
-(defconst tabbar-home-button-disabled-image
-  '((:type pbm :data "\
-P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 0 0 1 2 3 2 1 0 0 255 255 255 255 0 132 128 123 119 114 110
-106 0 255 255 255 255 0 0 1 2 3 2 1 0 0 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 255
-"))
-  "Default image for the disabled home button.")
-
-(defcustom tabbar-home-button
-  (cons (cons "[o]" tabbar-home-button-enabled-image)
-        (cons "[x]" tabbar-home-button-disabled-image))
-  "The home button.
-The variable `tabbar-button-widget' gives details on this widget."
-  :group 'tabbar
-  :type tabbar-button-widget
-  :set '(lambda (variable value)
-          (custom-set-default variable value)
-          ;; Schedule refresh of button value.
-          (setq tabbar-home-button-value nil)))
-
 ;;; Scroll left button
 ;;
 (defvar tabbar-scroll-left-button-value nil
   "Value of the scroll left button.")
 
-(defconst tabbar-scroll-left-button-enabled-image
-  '((:type pbm :data "\
-P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255 128 16 48 255 255 255 255 255 255 255
-255 144 28 86 128 0 255 255 255 255 255 255 160 44 92 159 135 113 0
-255 255 255 255 160 44 97 165 144 129 120 117 0 255 255 176 44 98 175
-174 146 127 126 127 128 0 255 255 0 160 184 156 143 136 134 135 137
-138 0 255 255 176 32 67 144 146 144 145 146 148 149 0 255 255 255 255
-160 42 75 140 154 158 159 160 0 255 255 255 255 255 255 160 40 74 154
-170 171 0 255 255 255 255 255 255 255 255 160 41 82 163 0 255 255 255
-255 255 255 255 255 255 255 160 32 48 255 255 255 255 255 255 255 255
-255 255 255 255 255 255
-"))
-  "Default image for the enabled scroll left button.
-A disabled button image will be automatically build from it.")
-
-(defcustom tabbar-scroll-left-button
-  (cons (cons " <" tabbar-scroll-left-button-enabled-image)
-        (cons " =" nil))
-  "The scroll left button.
-The variable `tabbar-button-widget' gives details on this widget."
-  :group 'tabbar
-  :type tabbar-button-widget
-  :set '(lambda (variable value)
-          (custom-set-default variable value)
-          ;; Schedule refresh of button value.
-          (setq tabbar-scroll-left-button-value nil)))
-
 ;;; Scroll right button
 ;;
 (defvar tabbar-scroll-right-button-value nil
   "Value of the scroll right button.")
-
-(defconst tabbar-scroll-right-button-enabled-image
-  '((:type pbm :data "\
-P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-48 32 160 255 255 255 255 255 255 255 255 255 255 44 161 71 32 160 255
-255 255 255 255 255 255 255 36 157 163 145 62 32 160 255 255 255 255
-255 255 30 128 133 137 142 124 50 32 160 255 255 255 255 29 120 121
-124 126 126 124 105 42 32 176 255 255 31 126 127 128 128 128 128 126
-124 89 32 255 255 33 134 135 136 137 137 138 119 49 32 176 255 255 34
-143 144 145 146 128 54 32 160 255 255 255 255 36 152 153 134 57 32 160
-255 255 255 255 255 255 38 141 60 32 160 255 255 255 255 255 255 255
-255 48 32 160 255 255 255 255 255 255 255 255 255 255 255 255 255 255
-255 255 255 255 255 255 255 255
-"))
-  "Default image for the enabled scroll right button.
-A disabled button image will be automatically build from it.")
-
-(defcustom tabbar-scroll-right-button
-  (cons (cons " >" tabbar-scroll-right-button-enabled-image)
-        (cons " =" nil))
-  "The scroll right button.
-The variable `tabbar-button-widget' gives details on this widget."
-  :group 'tabbar
-  :type tabbar-button-widget
-  :set '(lambda (variable value)
-          (custom-set-default variable value)
-          ;; Schedule refresh of button value.
-          (setq tabbar-scroll-right-button-value nil)))
 
 ;;; Separator
 ;;
@@ -866,10 +764,10 @@ SPECS is a list of image specifications.  See also `find-image'."
       tabbar-cached-image
     (when (and tabbar-use-images (display-images-p))
       (condition-case nil
-	  (prog1
-	      (setq tabbar-cached-image (find-image specs))
-	    (setq tabbar-cached-spec specs))
-	(error nil)))))
+    (prog1
+        (setq tabbar-cached-image (find-image specs))
+      (setq tabbar-cached-spec specs))
+  (error nil)))))
 
 (defsubst tabbar-disable-image (image)
   "From IMAGE, return a new image which looks disabled."
@@ -1569,7 +1467,7 @@ Returns non-nil if the new state is enabled.
         (setq tabbar--global-hlf (default-value 'header-line-format))
         (tabbar-init-tabsets-store)
         (setq-default header-line-format tabbar-header-line-format)
-	(if (fboundp 'tabbar-define-access-keys) (tabbar-define-access-keys)))
+  (if (fboundp 'tabbar-define-access-keys) (tabbar-define-access-keys)))
 ;;; OFF
     (when (tabbar-mode-on-p)
       ;; Turn off Tabbar-Local mode globally.
@@ -1644,8 +1542,7 @@ Returns non-nil if the new state is enabled.
   :group 'tabbar)
 
 (defcustom tabbar-buffer-home-button
-  (cons (cons "[+]" tabbar-home-button-enabled-image)
-        (cons "[-]" tabbar-home-button-disabled-image))
+  nil
   "The home button displayed when showing buffer tabs.
 The enabled button value is displayed when showing tabs for groups of
 buffers, and the disabled button value is displayed when showing
@@ -1741,8 +1638,8 @@ Return a list of one element based on major mode."
 Return the the first group where the current buffer is."
   (let ((bl (sort
              (mapcar
-	      ;; for each buffer, create list: buffer, buffer name, groups-list
-	      ;; sort on buffer name; store to bl (buffer list)
+        ;; for each buffer, create list: buffer, buffer name, groups-list
+        ;; sort on buffer name; store to bl (buffer list)
               #'(lambda (b)
                   (with-current-buffer b
                     (list (current-buffer)
@@ -1761,15 +1658,15 @@ Return the the first group where the current buffer is."
         (dolist (g (nth 2 e)) ;; for each member of groups-list for current buffer
           (let ((tabset (tabbar-get-tabset g))) ;; get group from group name
             (if tabset ;; if group exists
-		;; check if current buffer is same as any cached buffer
-		;; (search buffer list for matching buffer)
+    ;; check if current buffer is same as any cached buffer
+    ;; (search buffer list for matching buffer)
                 (unless (equal e (assq (car e) tabbar--buffers)) ;; if not,...
                   ;; This is a new buffer, or a previously existing
                   ;; buffer that has been renamed, or moved to another
                   ;; group.  Update the tab set, and the display.
                   (tabbar-add-tab tabset (car e) t) ;; add to end of tabset
                   (tabbar-set-template tabset nil))
-	      ;;if tabset doesn't exist, make a new tabset with this buffer
+        ;;if tabset doesn't exist, make a new tabset with this buffer
               (tabbar-make-tabset g (car e))))))
       ;; Remove tabs for buffers not found in cache or moved to other
       ;; groups, and remove empty tabsets.
@@ -1820,16 +1717,14 @@ or groups.  Call the function `tabbar-button-label' otherwise."
   (let ((lab (tabbar-button-label name)))
     (when (eq name 'home)
       (let* ((btn tabbar-buffer-home-button)
-             (on  (tabbar-find-image (cdar btn)))
-             (off (tabbar-find-image (cddr btn))))
+             (on  nil)
+             (off nil))
         ;; When `tabbar-buffer-home-button' does not provide a value,
         ;; default to the enabled value of `tabbar-home-button'.
-        (if on
-            (tabbar-normalize-image on 1)
-          (setq on (get-text-property 0 'display (car lab))))
-        (if off
-            (tabbar-normalize-image off 1)
-          (setq off (get-text-property 0 'display (car lab))))
+        (setq on (get-text-property 0 'display (car lab)))
+        
+        (setq off (get-text-property 0 'display (car lab)))
+
         (setcar lab
                 (if tabbar--buffer-show-groups
                     (propertize (or (caar btn) (car lab)) 'display on)
@@ -1959,7 +1854,7 @@ Run as `tabbar-quit-hook'."
 (add-hook 'tabbar-init-hook 'tabbar-buffer-init)
 (add-hook 'tabbar-quit-hook 'tabbar-buffer-quit)
 
-(setq tabbar-use-images t)
+(setq tabbar-use-images nil)
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (setq tabbar-ruler-global-ruler t) ; if you want a global ruler
 (setq tabbar-ruler-popup-menu nil) ; If you want a popup menu.
@@ -2786,19 +2681,19 @@ Call `tabbar-tab-label-function' to obtain a label for TAB."
 ;   :type 'boolean
 ;   :group 'tabbar-ruler)
 
-(defcustom tabbar-ruler-popup-scrollbar nil
-  "Should tabbas-ruler have popup scrollbar.  As mouse moves, the scroll-bar pops up.  Otherwise the sroll-bar is turned off."
-  :type 'boolean
-  :group 'tabbar-ruler)
+; (defcustom tabbar-ruler-popup-scrollbar nil
+;   "Should tabbas-ruler have popup scrollbar.  As mouse moves, the scroll-bar pops up.  Otherwise the sroll-bar is turned off."
+;   :type 'boolean
+;   :group 'tabbar-ruler)
 
-(defcustom tabbar-ruler-popup-menu-min-y 5 ;
-  "Minimum number of pixels from the top before a menu/toolbar pops up."
-  :type 'integer
-  :group 'tabbar-ruler)
-(defcustom tabbar-ruler-popup-menu-min-y-leave 50
-  "Minimum number of pixels form the top before a menu/toolbar disappears."
-  :type 'integer
-  :group 'tabbar-ruler)
+; (defcustom tabbar-ruler-popup-menu-min-y 5 ;
+;   "Minimum number of pixels from the top before a menu/toolbar pops up."
+;   :type 'integer
+;   :group 'tabbar-ruler)
+; (defcustom tabbar-ruler-popup-menu-min-y-leave 50
+;   "Minimum number of pixels form the top before a menu/toolbar disappears."
+;   :type 'integer
+;   :group 'tabbar-ruler)
 (defcustom tabbar-ruler-do-not-switch-on-ruler-when-tabbar-is-on-y 75
   "Minimum number of pixels to switch on ruler when tabbar is on."
   :type 'integer          
