@@ -65,7 +65,6 @@
 (require 'init-projectile)
 (require 'init-linum)
 
-(require 'idle-require)
 (require 'init-xterm)
 (require 'init-hippie-expand)
 (require 'init-golang)
