@@ -21,6 +21,8 @@
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 80)
 
+;; Allow bind export path in .org file with #+bind meta.
+(setq org-export-allow-BIND t)
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
@@ -47,6 +49,35 @@
       (unless (file-exists-p org-ditaa-jar-path)
         (sanityinc/grab-ditaa url jar-name)))))
 
+;;;
+;;; plantuml mode
+;;;
+(defun ag-download-plantuml (url jar-name)
+  "Download URL and extract JAR-NAME as 'org-plantuml-jar-path'."
+  (message "Grabbing " jar-name "for plantuml.")
+  (url-copy-file url org-plantuml-jar-path))
+
+(setq org-plantuml-jar-path (expand-file-name "plantuml.jar" (file-name-directory user-init-file)))
+(unless (file-exists-p org-plantuml-jar-path)
+  (let ((jar-name "plantuml.jar")
+        (url "http://jaist.dl.sourceforge.net/project/plantuml/plantuml.jar"))
+    (setq org-plantuml-jar-path (expand-file-name jar-name (file-name-directory user-init-file)))
+    (unless (file-exists-p org-plantuml-jar-path)
+      (ag-download-plantuml url jar-name))))
+
+;; ignore warnning during eval graphics.
+(setq org-confirm-babel-evaluate nil)
+
+;; Show image dynamicly.
+(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+
+;; Make babel results blocks lowercase
+(setq org-babel-results-keyword "results")
+
+(defun bh/display-inline-images ()
+  (condition-case nil
+      (org-display-inline-images)
+    (error nil)))
 
 
 (define-minor-mode prose-mode
@@ -325,6 +356,7 @@ typical word processor."
    '((R . t)
      (ditaa . t)
      (dot . t)
+     (plantuml . t)
      (emacs-lisp . t)
      (gnuplot . t)
      (haskell . nil)
@@ -507,5 +539,6 @@ typical word processor."
       '(elisp "lisp"
               emacs-lisp "lisp"))
 ;; }}
+
 
 (provide 'init-org)

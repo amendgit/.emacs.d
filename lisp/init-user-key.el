@@ -3,7 +3,8 @@
 ;;----------------------------------------------------------------------------
 (define-prefix-command 'user-key-map)
 (global-set-key (kbd "C-z") 'user-key-map)
-(global-set-key (kbd "C-z C-y") 'helm-c-yas-complete)
+;; zap up to char.
+(global-set-key (kbd "C-z z") 'zap-up-to-char)
 
 (global-set-key (kbd "M-<up>") 'scroll-down-line)
 (global-set-key (kbd "M-<down>") 'scroll-up-line)
@@ -25,11 +26,10 @@
 ;; M-j to helm-imenu.
 (global-set-key (kbd "M-j") 'helm-imenu)
 
-;; zap up to char.
-(global-set-key (kbd "C-z z") 'zap-up-to-char)
 
 ;; These are free keys, use them.
 ;; Do not map "M-F" and "M-B", they move and select the region.
+(global-set-key (kbd "M-Y") 'helm-c-yas-complete)
 (global-set-key (kbd "M-A") 'helm-mini)
 (global-set-key (kbd "M-N") 'new-frame)
 (global-set-key (kbd "M-O") 'helm-projectile)
@@ -37,6 +37,7 @@
 (global-set-key (kbd "M-E") 'eshell)
 (global-set-key (kbd "M-S") 'helm-projectile-grep)
 (global-set-key (kbd "M-K") 'kill-this-buffer)
+(global-set-key (kbd "M-H") 'helm-projectile-recentf)
 
 (after-load 'ibuffer
   (define-key ibuffer-mode-map (kbd "C-x C-b") nil))
