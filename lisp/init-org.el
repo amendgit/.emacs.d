@@ -49,9 +49,7 @@
       (unless (file-exists-p org-ditaa-jar-path)
         (sanityinc/grab-ditaa url jar-name)))))
 
-;;;
-;;; plantuml mode
-;;;
+;; {{ plantuml mode
 (defun ag-download-plantuml (url jar-name)
   "Download URL and extract JAR-NAME as 'org-plantuml-jar-path'."
   (message "Grabbing " jar-name "for plantuml.")
@@ -64,6 +62,7 @@
     (setq org-plantuml-jar-path (expand-file-name jar-name (file-name-directory user-init-file)))
     (unless (file-exists-p org-plantuml-jar-path)
       (ag-download-plantuml url jar-name))))
+;; }}
 
 ;; ignore warnning during eval graphics.
 (setq org-confirm-babel-evaluate nil)
@@ -152,20 +151,6 @@ typical word processor."
 ;; Allow refile to create parent tasks with confirmation
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-
-;;; To-do settings
-
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-              (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-              (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
-
-(setq org-todo-keyword-faces
-      (quote (("NEXT" :inherit warning)
-              ("PROJECT" :inherit font-lock-string-face))))
-
-
-
 ;;; Agenda views
 
 
@@ -313,8 +298,6 @@ typical word processor."
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archive")
 
-
-
 
 
 (require-package 'org-pomodoro)
@@ -405,10 +388,51 @@ typical word processor."
 ;; To install texlive-xetex:
 ;;    `sudo USE="cjk" emerge texlive-xetex` on Gentoo Linux
 (setq org-latex-to-pdf-process ;; org v7
-      '("xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"))
+      '("xelatex -interaction nonstopmode -output-directory %o %f"))
 (setq org-latex-pdf-process org-latex-to-pdf-process) ;; org v8
+
+(require 'ox-latex)
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+
+(add-to-list 'org-latex-classes
+  '("article"
+    "\\documentclass{article}
+     \\usepackage{xeCJK}
+     \\setCJKmainfont[BoldFont=STZhongsong, ItalicFont=STKaiti]{STSong}
+     \\setCJKsansfont[BoldFont=STHeiti]{STXihei}
+     \\setCJKmonofont{STFangsong}"
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+  '("book"
+    "\\documentclass{book}
+     \\usepackage{xeCJK}
+     \\setCJKmainfont[BoldFont=STZhongsong, ItalicFont=STKaiti]{STSong}
+     \\setCJKsansfont[BoldFont=STHeiti]{STXihei}
+     \\setCJKmonofont{STFangsong}"
+    ("\\part{%s}" . "\\part*{%s}")
+    ("\\chapter{%s}" . "\\chapter*{%s}")
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+(add-to-list 'org-latex-classes
+  '("koma-article"
+    "\\documentclass[captions=tableheading]{scrartcl}
+     \\usepackage{xeCJK}
+     \\setCJKmainfont[BoldFont=STZhongsong, ItalicFont=STKaiti]{STSong}
+     \\setCJKsansfont[BoldFont=STHeiti]{STXihei}
+     \\setCJKmonofont{STFangsong}"
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 ;; }}
 
 (defun my-setup-odt-org-convert-process ()

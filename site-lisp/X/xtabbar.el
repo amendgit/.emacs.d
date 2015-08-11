@@ -193,8 +193,6 @@
 ;;; Options
 ;;
 
-
-
 (defgroup tabbar nil
   "Display a tab bar in the header line."
   :group 'convenience)
@@ -2951,6 +2949,7 @@ Call `tabbar-tab-label-function' to obtain a label for TAB."
 
 (defvar tabbar-ruler-projectile-tabbar-buffer-group-calc nil
   "Buffer group for projectile.  Should be buffer local and speed up calculation of buffer groups.")
+
 (defun tabbar-ruler-projectile-tabbar-buffer-groups ()
   "Return the list of group names BUFFER belongs to.
     Return only one group for each buffer."
@@ -3173,7 +3172,7 @@ This is based on the variable `tabbar--buffer-show-groups'"
 
 (tabbar-mode 1)
 
-(provide 'tabbar)
+(provide 'xtabbar)
 
 (run-hooks 'tabbar-load-hook)
 

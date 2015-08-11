@@ -77,7 +77,7 @@
 (require 'init-fonts)
 (require 'init-vc)
 (require 'init-darcs)
-(require 'tabbar)
+(require 'xtabbar)
 (require 'init-git)
 (require 'init-compile)
 (require 'init-crontab)
