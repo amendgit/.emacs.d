@@ -24,6 +24,19 @@
 ;; Allow bind export path in .org file with #+bind meta.
 (setq org-export-allow-BIND t)
 
+;;------------------------------------------------------------------------------
+;; Support octopress
+;;------------------------------------------------------------------------------
+(require-package 'orglue)
+(require-package 'ctable)
+(require-package 'org-octopress)
+(require 'org-octopress)
+(setq org-octopress-directory-top       "~/Dev/octopress/source")
+(setq org-octopress-directory-posts     "~/Dev/octopress/source/_posts")
+(setq org-octopress-directory-org-top   "~/Dev/octopress/source")
+(setq org-octopress-directory-org-posts "~/Dev/octopress/source/blog")
+(setq org-octopress-setup-file          "~/Dev/org-sty/setupfile.org")
+
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
 (defun sanityinc/grab-ditaa (url jar-name)
