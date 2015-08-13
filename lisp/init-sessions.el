@@ -34,12 +34,12 @@
 ;;----------------------------------------------------------------------------
 ;; Set default size for new-frame but not the startup.
 ;;----------------------------------------------------------------------------
-(add-hook 'desktop-after-read-hook
-    '(lambda ()
-      (add-to-list 'default-frame-alist '(top . 0))
-      ;; (add-to-list 'default-frame-alist '(left . 0)) ;; Once we set left the desktop restore will failed to restore window position.
-      (add-to-list 'default-frame-alist '(width . 95)) 
-      (add-to-list 'default-frame-alist '(height . 52))))
+; (add-hook 'desktop-after-read-hook
+;     '(lambda ()
+;       (add-to-list 'default-frame-alist '(top . 0))
+;       ;; (add-to-list 'default-frame-alist '(left . 0)) ;; Once we set left the desktop restore will failed to restore window position.
+;       (add-to-list 'default-frame-alist '(width . 95)) 
+;       (add-to-list 'default-frame-alist '(height . 52))))
 
 (require-package 'session)
 

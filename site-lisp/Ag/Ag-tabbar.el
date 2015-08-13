@@ -3172,7 +3172,7 @@ This is based on the variable `tabbar--buffer-show-groups'"
 
 (tabbar-mode 1)
 
-(provide 'xtabbar)
+(provide 'Ag-tabbar)
 
 (run-hooks 'tabbar-load-hook)
 

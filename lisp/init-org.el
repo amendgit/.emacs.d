@@ -35,7 +35,8 @@
 (setq org-octopress-directory-posts     "~/Dev/octopress/source/_posts")
 (setq org-octopress-directory-org-top   "~/Dev/octopress/source")
 (setq org-octopress-directory-org-posts "~/Dev/octopress/source/blog")
-(setq org-octopress-setup-file          "~/Dev/org-sty/setupfile.org")
+(setq org-octopress-setup-file          "~/Dev/octopress/setupfile.org")
+(setq org-jekyll-use-src-plugin t)
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
@@ -165,8 +166,6 @@ typical word processor."
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;;; Agenda views
-
-
 (let ((active-project-match "-INBOX/PROJECT"))
 
   (setq org-stuck-projects
