@@ -59,7 +59,9 @@
 (require 'init-gui-frames)
 (require 'init-editing-utils)
 
-(require 'init-auto-complete)
+; (require 'init-auto-complete)
+(require 'init-company)
+(require 'init-yasnippet)
 
 (require 'init-helm)
 (require 'init-projectile)
@@ -77,7 +79,7 @@
 (require 'init-fonts)
 (require 'init-vc)
 (require 'init-darcs)
-(require 'Ag-tabbar)
+(require 'tabbar)
 (require 'init-git)
 (require 'init-compile)
 (require 'init-crontab)
@@ -108,9 +110,9 @@
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)

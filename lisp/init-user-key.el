@@ -38,6 +38,7 @@
 (global-set-key (kbd "M-S") 'helm-projectile-grep)
 (global-set-key (kbd "M-K") 'kill-this-buffer)
 (global-set-key (kbd "M-H") 'helm-projectile-recentf)
+(global-set-key (kbd "M-Y") 'company-yasnippet )
 
 (after-load 'ibuffer
   (define-key ibuffer-mode-map (kbd "C-x C-b") nil))

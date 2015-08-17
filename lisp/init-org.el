@@ -576,5 +576,4 @@ typical word processor."
               emacs-lisp "lisp"))
 ;; }}
 
-
 (provide 'init-org)
