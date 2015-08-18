@@ -46,7 +46,6 @@
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
-
 (require-package 'wgrep)
 (require-package 'project-local-variables)
 (require-package 'diminish)
@@ -59,7 +58,6 @@
 (require 'init-gui-frames)
 (require 'init-editing-utils)
 
-; (require 'init-auto-complete)
 (require 'init-company)
 (require 'init-yasnippet)
 
@@ -68,7 +66,6 @@
 (require 'init-linum)
 
 (require 'init-xterm)
-(require 'init-hippie-expand)
 (require 'init-golang)
 (require 'init-org)
 (require 'init-markdown)
@@ -86,7 +83,7 @@
 (require 'init-textile)
 (require 'init-python-mode)
 
-(require 'init-slime)
+; (require 'init-slime)
 (require 'init-proxies)
 (require 'init-dash)
 (require 'init-ledger)

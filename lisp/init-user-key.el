@@ -26,22 +26,20 @@
 ;; M-j to helm-imenu.
 (global-set-key (kbd "M-j") 'helm-imenu)
 
-
-;; These are free keys, use them.
-;; Do not map "M-F" and "M-B", they move and select the region.
+;; these are free keys, use them.
+;; do not map "m-f" and "m-b", they move and select the region.
 (global-set-key (kbd "M-Y") 'helm-c-yas-complete)
 (global-set-key (kbd "M-A") 'helm-mini)
 (global-set-key (kbd "M-N") 'new-frame)
-(global-set-key (kbd "M-O") 'helm-projectile)
 (global-set-key (kbd "M-P") 'helm-projectile-switch-project)
 (global-set-key (kbd "M-E") 'eshell)
 (global-set-key (kbd "M-S") 'helm-projectile-grep)
 (global-set-key (kbd "M-K") 'kill-this-buffer)
 (global-set-key (kbd "M-H") 'helm-projectile-recentf)
-(global-set-key (kbd "M-Y") 'company-yasnippet )
+(global-set-key (kbd "C-o") 'helm-projectile)
 
 (after-load 'ibuffer
-  (define-key ibuffer-mode-map (kbd "C-x C-b") nil))
+  (define-key ibuffer-mode-map (kbd "c-x C-b") nil))
 (global-set-key (kbd "C-x C-b") 'helm-projectile)
 
 (provide 'init-user-key)

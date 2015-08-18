@@ -69,7 +69,7 @@ shadow back-ends that come after it.  Recommended usages:
 
   (add-hook 'js-mode-hook
             (lambda ()
-              (set (make-local-variable 'company-backends)A
+              (set (make-local-variable 'company-backends)
                    '((company-dabbrev-code company-yasnippet)))))
 
 * After keyword `:with', grouped with other back-ends.

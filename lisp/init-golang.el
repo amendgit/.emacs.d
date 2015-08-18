@@ -16,11 +16,15 @@
 	(setq indent-tabs-mode nil)
 	(setq default-tab-width 4))
 
-(require-package 'auto-complete)
-(require-package 'go-autocomplete)
+(require-package 'company-go)
 
-(require 'auto-complete-config)
-(require 'go-autocomplete)
-(ac-config-default)
+(add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (company-mode)))
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
 
 (provide 'init-golang)
