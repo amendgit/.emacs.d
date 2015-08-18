@@ -24,7 +24,7 @@
 ;;----------------------------------------------------------------------------
 
 ;; Font for mac
-(set-face-font 'default "Consolas 14")
+(set-face-font 'default "Consolas 13")
 
 (if (and (fboundp 'daemonp) (daemonp))
     (add-hook 'after-make-frame-functions
