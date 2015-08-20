@@ -39,3 +39,5 @@ site-lisp/package/
 /ido.last
 /recentf
 /viper
+projectile.cache
+projectile-bookmarks.eld
