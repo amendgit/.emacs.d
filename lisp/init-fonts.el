@@ -32,8 +32,8 @@
                     (lambda (frame)
                       (with-selected-frame frame
                         (set-fontset-font "fontset-default"
-                                          'chinese-gbk "KaiTi 11"))))
-        (set-fontset-font "fontset-default" 'chinese-gbk "KaiTi 11")))
+                                          'chinese-gbk "STHeiti 10"))))
+        (set-fontset-font "fontset-default" 'chinese-gbk "STHeiti 10")))
   (set-face-font 'default "Consolas 13")
   (if (and (fboundp 'daemonp) (daemonp))
       (add-hook 'after-make-frame-functions
