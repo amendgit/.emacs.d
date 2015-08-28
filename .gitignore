@@ -41,3 +41,4 @@ site-lisp/package/
 /viper
 projectile.cache
 projectile-bookmarks.eld
+*.sublime-workspace
