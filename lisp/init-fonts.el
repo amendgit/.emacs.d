@@ -40,8 +40,8 @@
                 (lambda (frame)
                   (with-selected-frame frame
                     (set-fontset-font "fontset-default"
-                                      'chinese-gbk "STHeiti 14"))))
-    (set-fontset-font "fontset-default" 'chinese-gbk "STHeiti 14")))
+                                      'chinese-gbk "Microsoft YaHei 12"))))
+    (set-fontset-font "fontset-default" 'chinese-gbk "Microsoft YaHei 12")))
 
 
 (provide 'init-fonts)

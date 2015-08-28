@@ -3170,8 +3170,6 @@ This is based on the variable `tabbar--buffer-show-groups'"
 
 (tabbar-ruler-group-by-projectile-project)
 
-(tabbar-mode 1)
-
 (provide 'tabbar)
 
 (run-hooks 'tabbar-load-hook)
