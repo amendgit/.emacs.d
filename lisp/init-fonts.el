@@ -23,25 +23,23 @@
 ;; Make Chinese and English the same size for org mode.
 ;;----------------------------------------------------------------------------
 
-;; Font for mac
-(if *linux*
-    (progn
-      (set-face-font 'default "Consolas 10")
-      (if (and (fboundp 'daemonp) (daemonp))
-          (add-hook 'after-make-frame-functions
-                    (lambda (frame)
-                      (with-selected-frame frame
-                        (set-fontset-font "fontset-default"
-                                          'chinese-gbk "STHeiti 10"))))
-        (set-fontset-font "fontset-default" 'chinese-gbk "STHeiti 10")))
-  (set-face-font 'default "Consolas 13")
-  (if (and (fboundp 'daemonp) (daemonp))
-      (add-hook 'after-make-frame-functions
-                (lambda (frame)
-                  (with-selected-frame frame
-                    (set-fontset-font "fontset-default"
-                                      'chinese-gbk "Microsoft YaHei 12"))))
-    (set-fontset-font "fontset-default" 'chinese-gbk "Microsoft YaHei 12")))
+;; Font for different platform
+(defun platform-font()
+  (cond 
+    (*linux* "Consolas 10")
+    (*is-a-mac* "Consolas 13")))
 
+(defun platform-gbk-font()
+  (cond 
+    (*linux* "STHeiti 10")
+    (*is-a-mac* "Microsoft YaHei 12")))
+
+(set-face-font 'default (platform-font))
+(if (and (fboundp 'daemonp) (daemonp))
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (set-fontset-font "fontset-default" 'chinese-gbk (platform-gbk-font)))))
+  (set-fontset-font "fontset-default" 'chinese-gbk (platform-gbk-font)))
 
 (provide 'init-fonts)
