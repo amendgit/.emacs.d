@@ -31,7 +31,7 @@
 
 (defun platform-gbk-font()
   (cond 
-    (*linux* "STHeiti 10")
+    (*linux* "YaHei Consolas Hybrid 10")
     (*is-a-mac* "Microsoft YaHei 12")))
 
 (set-face-font 'default (platform-font))
