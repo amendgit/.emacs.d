@@ -26,12 +26,12 @@
 ;; Font for different platform
 (defun platform-font()
   (cond 
-    (*linux* "Consolas 10")
+    (*linux* "Droid Sans Mono 10")
     (*is-a-mac* "Consolas 13")))
 
 (defun platform-gbk-font()
   (cond 
-    (*linux* "YaHei Consolas Hybrid 10")
+    (*linux* "Droid Sans Mono 10")
     (*is-a-mac* "Microsoft YaHei 12")))
 
 (set-face-font 'default (platform-font))
